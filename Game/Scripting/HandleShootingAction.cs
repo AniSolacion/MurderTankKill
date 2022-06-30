@@ -10,7 +10,7 @@ namespace asteroid.script
     {
 
         private RaylibKeyboardService keyboardService;
-        private genie.cast.Actor? ship;
+        private genie.cast.Actor? tank.Current;
         private DateTime lastBulletSpawn;
         private RaylibAudioService audioService;
         private float attackInterval;
@@ -20,7 +20,7 @@ namespace asteroid.script
                                     RaylibKeyboardService keyboardService,
                                     RaylibAudioService audioService) : base(priority)
         {
-            this.ship = null;
+            this.tank = null;
             this.lastBulletSpawn = DateTime.Now;
             this.attackInterval = attackInterval;
             this.bulletVel = bulletVel;
@@ -32,8 +32,8 @@ namespace asteroid.script
             TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn;
             if (this.ship != null && timeSinceLastShot.TotalSeconds >= this.attackInterval) {
                 // Bullet's starting position should be right on top of the ship
-                float bulletX = this.ship.GetX();
-                float bulletY = this.ship.GetY() - (this.ship.GetHeight()/2);
+                float bulletX = this.tank.GetX();
+                float bulletY = this.tank.GetY() - (this.tank.GetHeight()/2);
 
                 // Create the bullet and put it in the cast
                 Actor bullet = new Actor("./asteroid/assets/bullet.png", 20, 30, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
