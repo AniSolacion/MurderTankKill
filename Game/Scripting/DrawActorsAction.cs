@@ -19,10 +19,19 @@ namespace asteroid.script {
 
             // First, fill the screen with white every frame, get ready to draw more stuff
             this.screenService.FillScreen(Color.WHITE);
-            // foreach (Actor actor in cast.GetAllActors()) {
-            //     Color actorColor = actor is Ship ? Color.BLUE : Color.BLACK;
-            //     this.screenService.DrawRectangle(actor.GetPosition(), actor.GetWidth(), actor.GetHeight(), actorColor, 5);
-            // }
+            foreach (Actor actor in cast.GetAllActors()) {
+                if(actor is tank1){
+                    Color actorColor = Color.BLUE;
+                }
+                if else(actor is tank2){
+                    Color actorColor = Color.RED;
+                }
+                else{
+                    Color actorColor = Color.BLACK;
+                }
+                // Color actorColor = actor is Tank ? Color.BLUE : Color.BLACK;
+                this.screenService.DrawRectangle(actor.GetPosition(), actor.GetWidth(), actor.GetHeight(), actorColor, 5);
+            }
             this.screenService.DrawActors(cast.GetAllActors());
         }
     }
