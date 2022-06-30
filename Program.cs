@@ -21,8 +21,8 @@ namespace Murdertankkill
         {
             // create the cast
             Cast cast = new Cast();
-            cast.AddActor("bike", new Bike(Constants.BIKESTART, Constants.RED));
-            cast.AddActor("bike2", new Bike(Constants.BIKE2START, Constants.YELLOW));
+            cast.AddActor("tank", new Bike(Constants.TANKSTART, Constants.RED));
+            cast.AddActor("tank2", new Bike(Constants.TANK2START, Constants.YELLOW));
             cast.AddActor("score", new Score());
 
             // create the services
