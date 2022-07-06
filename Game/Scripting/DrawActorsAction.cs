@@ -23,7 +23,7 @@ namespace asteroid.script {
                 if(actor is tank1){
                     Color actorColor = Color.BLUE;
                 }
-                if else(actor is tank2){
+                else if(actor is tank2){
                     Color actorColor = Color.RED;
                 }
                 else{

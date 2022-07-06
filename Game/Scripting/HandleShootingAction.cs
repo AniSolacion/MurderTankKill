@@ -10,7 +10,7 @@ namespace asteroid.script
     {
 
         private RaylibKeyboardService keyboardService;
-        private genie.cast.Actor? tank.Current;
+        private genie.cast.Actor? tank.Current();
         private DateTime lastBulletSpawn;
         private RaylibAudioService audioService;
         private float attackInterval;
