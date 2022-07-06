@@ -22,7 +22,7 @@ namespace asteroid.script {
 
             // Draw all actors as rectangles for now.
             foreach (Actor actor in cast.GetAllActors()) {
-                if(actor is tank1){
+                if(actor is cast.getActor('tank1')){
                     Color actorColor = Color.BLUE;
                 }
                 else if(actor is tank2){
