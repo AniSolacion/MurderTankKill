@@ -49,6 +49,25 @@ namespace asteroid.script {
                     }
                 }
             }
+
+            // Instant Kill Astroid&Ship Collision
+            // public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
+            // // Grab the ship from the cast
+            // this.ship = cast.GetFirstActor("ship");
+
+            // // Only worry about collision if the ship actually exists
+            // if (this.ship != null) {
+            //     foreach (Actor actor in cast.GetActors("asteroids")) {
+            //         if (this.physicsService.CheckCollision(this.ship, actor)) {
+            //             cast.RemoveActor("ship", this.ship);
+            //             cast.RemoveActor("asteroids", actor);
+            //             this.audioService.PlaySound("asteroid/assets/sound/explosion-01.wav", (float) 0.1);
+            //             this.ship = null;
+            //             break;
+            //         }
+            //     }
+            // }
+        
         }
     }
 }
