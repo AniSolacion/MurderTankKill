@@ -19,6 +19,8 @@ namespace asteroid.script {
 
             // First, fill the screen with white every frame, get ready to draw more stuff
             this.screenService.FillScreen(Color.WHITE);
+
+            // Draw all actors as rectangles for now.
             foreach (Actor actor in cast.GetAllActors()) {
                 if(actor is tank1){
                     Color actorColor = Color.BLUE;

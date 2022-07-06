@@ -7,33 +7,33 @@ using genie.services.raylib;
 using asteroid.cast;
 
 namespace asteroid.script {
-    class HandleShipAsteroidsCollisionAction : genie.script.Action {
+    class HandleTankAsteroidsCollisionAction : genie.script.Action {
         
         // Member Variables
         RaylibPhysicsService physicsService;
         RaylibAudioService audioService;
-        private genie.cast.Actor? ship;
+        private genie.cast.Actor? tank;
 
 
         // Constructor
-        public HandleShipAsteroidsCollisionAction(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService) : base(priority) {
-            this.ship = null;
+        public HandleTankAsteroidsCollisionAction(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService) : base(priority) {
+            this.tank = null;
             this.physicsService = physicsService;
             this.audioService = audioService;
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
-            // Grab the ship from the cast
-            this.ship = cast.GetFirstActor("ship");
+            // Grab the tank from the cast
+            this.tank = cast.GetFirstActor("tank");
 
-            // Only worry about collision if the ship actually exists
-            if (this.ship != null) {
+            // Only worry about collision if the tank actually exists
+            if (this.tank != null) {
                 foreach (Actor actor in cast.GetActors("asteroids")) {
-                    if (this.physicsService.CheckCollision(this.ship, actor)) {
-                        cast.RemoveActor("ship", this.ship);
+                    if (this.physicsService.CheckCollision(this.tank, actor)) {
+                        cast.RemoveActor("tank", this.tank);
                         cast.RemoveActor("asteroids", actor);
                         this.audioService.PlaySound("asteroid/assets/sound/explosion-01.wav", (float) 0.1);
-                        this.ship = null;
+                        this.tank = null;
                         break;
                     }
                 }

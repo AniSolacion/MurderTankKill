@@ -5,17 +5,17 @@ using genie.services;
 using genie.services.raylib;
 
 namespace asteroid.script {
-    class HandleShipMovementAction : genie.script.Action {
+    class HandleTankMovementAction : genie.script.Action {
         
         private RaylibKeyboardService keyboardService;
-        private genie.cast.Actor? ship;
+        private genie.cast.Actor? tank;
         private List<int> keysOfInterest;
-        private int shipMovementVel;
+        private int tankMovementVel;
 
-        public HandleShipMovementAction(int priority, RaylibKeyboardService keyboardService) : base(priority) {
+        public HandleTankMovementAction(int priority, RaylibKeyboardService keyboardService) : base(priority) {
             this.keyboardService = keyboardService;
-            this.ship = null;
-            this.shipMovementVel = 4;
+            this.tank = null;
+            this.tankMovementVel = 4;
             this.keysOfInterest = new List<int>();
             this.keysOfInterest.Add(Keys.LEFT);
             this.keysOfInterest.Add(Keys.RIGHT);
@@ -25,11 +25,11 @@ namespace asteroid.script {
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
             
-            // Grab the ship from the cast
-            this.ship = cast.GetFirstActor("ship");
+            // Grab the tank from the cast
+            this.tank = cast.GetFirstActor("tank");
 
             // Only move if ship is not null
-            if (this.ship != null) {
+            if (this.tank != null) {
                 
                 // Get the keysState from the keyboardService
                 Dictionary<int, bool> keysState = keyboardService.GetKeysState(this.keysOfInterest);
@@ -37,26 +37,26 @@ namespace asteroid.script {
                 // Change the velocity to the appropriate value and let MoveActorsAction handle the
                 // actual movement
                 if (keysState[Keys.LEFT]) {
-                    this.ship.SetVx(-this.shipMovementVel);
+                    this.tank.SetVx(-this.tankMovementVel);
                 }
                 if (keysState[Keys.RIGHT]) {
-                    this.ship.SetVx(this.shipMovementVel);
+                    this.tank.SetVx(this.tankMovementVel);
                 }
                 if (keysState[Keys.DOWN]) {
-                    this.ship.SetVy(this.shipMovementVel);
+                    this.tank.SetVy(this.tankMovementVel);
                 }
                 if (keysState[Keys.UP]) {
-                    this.ship.SetVy(-this.shipMovementVel);
+                    this.tank.SetVy(-this.tankMovementVel);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
                 if (!(keysState[Keys.LEFT] || keysState[Keys.RIGHT])) {
-                    this.ship.SetVx(0);
+                    this.tank.SetVx(0);
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
                 if (!(keysState[Keys.UP] || keysState[Keys.DOWN])) {
-                    this.ship.SetVy(0);
+                    this.tank.SetVy(0);
                 }
             }
         }

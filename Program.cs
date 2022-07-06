@@ -35,8 +35,8 @@ namespace asteroid
             (int, int) W_SIZE = (500, 700);
             (int, int) START_POSITION_PLAYER_1 = (200, 200); // Top left (ish)
             (int, int) START_POSITION_PLAYER_2 = (500, 700);
-            int SHIP_WIDTH = 40;
-            int SHIP_LENGTH = 50;
+            int TANK_WIDTH = 40;
+            int TANK_LENGTH = 50;
             string SCREEN_TITLE = "Murder Tank Kill";
             int FPS = 120;
             
@@ -73,7 +73,7 @@ namespace asteroid
             startGameActions["input"] = new List<genie.script.Action>();
             startGameActions["update"] = new List<genie.script.Action>();
             startGameActions["output"] = new List<genie.script.Action>();
-            startGameActions["input"].Add(new HandleShipMovementAction(2, keyboardService));
+            startGameActions["input"].Add(new HandleTankMovementAction(2, keyboardService));
             startGameActions["input"].Add(new HandleShootingAction(2, (float)0.15, (0, -10), keyboardService, audioservice));
 
             // Add all input actions
@@ -82,7 +82,7 @@ namespace asteroid
 
             // Add all update actions
             script.AddAction("update", new MoveActorsAction(1, physicsService));
-            script.AddAction("update", new HandleShipAsteroidsCollisionAction(1, physicsService, audioservice));
+            script.AddAction("update", new HandleTankAsteroidsCollisionAction(1, physicsService, audioservice));
             script.AddAction("update", new HandleBulletsAsteroidsCollisionAction(1, physicsService, audioservice));
 
             // Add all output actions

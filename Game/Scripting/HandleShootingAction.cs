@@ -30,7 +30,7 @@ namespace asteroid.script
 
         private void SpawnBullet(Clock clock, Cast cast) {
             TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn;
-            if (this.ship != null && timeSinceLastShot.TotalSeconds >= this.attackInterval) {
+            if (this.tank != null && timeSinceLastShot.TotalSeconds >= this.attackInterval) {
                 // Bullet's starting position should be the direction of the turret
                 float bulletX = this.tank.GetX();
                 float bulletY = this.tank.GetY() - (this.tank.GetHeight()/2);
@@ -50,8 +50,8 @@ namespace asteroid.script
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback)
         {
-            // Grab the ship from the cast
-            this.ship = cast.GetFirstActor("ship");
+            // Grab the tank from the cast
+            this.tank = cast.GetFirstActor("tank");
 
             // If the space key is down, spawn a new bullet
             if (this.keyboardService.IsKeyDown(Keys.SPACE)) {
