@@ -17,10 +17,10 @@ namespace asteroid.script {
             this.ship = null;
             this.shipMovementVel = 4;
             this.keysOfInterest = new List<int>();
-            this.keysOfInterest.Add(Keys.LEFT)//Q;
-            this.keysOfInterest.Add(Keys.RIGHT)//E;
-            this.keysOfInterest.Add(Keys.DOWN)//U;
-            this.keysOfInterest.Add(Keys.UP)//O;
+            this.keysOfInterest.Add(Keys.LEFT);//Q;
+            this.keysOfInterest.Add(Keys.RIGHT);//E;
+            this.keysOfInterest.Add(Keys.DOWN);//U;
+            this.keysOfInterest.Add(Keys.UP);//O;
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
