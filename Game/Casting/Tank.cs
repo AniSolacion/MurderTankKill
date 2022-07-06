@@ -1,6 +1,6 @@
 using genie.cast;
 
-namespace actor.cast {
+namespace asteroid.cast {
     class Tank : Actor {
 
         public Tank(string path, int width, int height,

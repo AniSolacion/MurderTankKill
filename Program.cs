@@ -78,7 +78,7 @@ namespace asteroid
 
             // Add all input actions
             script.AddAction("input", new HandleStartGameAction(2, mouseService, physicsService, startGameActions));
-            script.AddAction("input", new HandleQuitAction(1,screenService));
+            //script.AddAction("input", new HandleQuitAction(1,screenService));
 
             // Add all update actions
             script.AddAction("update", new MoveActorsAction(1, physicsService));
