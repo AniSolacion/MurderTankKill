@@ -32,7 +32,7 @@ namespace asteroid
         public static void Main(string[] args)
         {
             // A few game constants
-            (int, int) W_SIZE = (500, 700);
+            (int, int) W_SIZE = (900, 700);
             (int, int) START_POSITION_PLAYER_1 = (200, 200); // Top left (ish)
             (int, int) START_POSITION_PLAYER_2 = (500, 700);
             int TANK_WIDTH = 40;
