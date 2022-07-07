@@ -15,10 +15,18 @@ namespace asteroid.script {
             this.keyboardService = keyboardService;
             this.tankMovementVel = 4;
             this.keysOfInterest = new List<int>();
-            this.keysOfInterest.Add(Keys.LEFT);
-            this.keysOfInterest.Add(Keys.RIGHT);
-            this.keysOfInterest.Add(Keys.DOWN);
-            this.keysOfInterest.Add(Keys.UP);
+
+            //PLayer 1 Movement Keys
+            this.keysOfInterest.Add(Keys.A);
+            this.keysOfInterest.Add(Keys.D);
+            this.keysOfInterest.Add(Keys.S);
+            this.keysOfInterest.Add(Keys.W);
+
+            //Player 2 Movement Keys
+            this.keysOfInterest.Add(Keys.J);
+            this.keysOfInterest.Add(Keys.L);
+            this.keysOfInterest.Add(Keys.K);
+            this.keysOfInterest.Add(Keys.I);
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
@@ -26,7 +34,7 @@ namespace asteroid.script {
             // Grab the tank from the cast
 
             Actor tank1 = cast.GetFirstActor("tank1");
-            Actor tank2 = cast.GetFirstActor("tank1");
+            Actor tank2 = cast.GetFirstActor("tank2");
 
 
             // Only move if ship is not null
