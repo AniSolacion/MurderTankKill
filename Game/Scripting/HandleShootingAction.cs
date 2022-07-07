@@ -54,7 +54,10 @@ namespace asteroid.script
             this.tank = cast.GetFirstActor("tank");
 
             // If the space key is down, spawn a new bullet
-            if (this.keyboardService.IsKeyDown(Keys.SPACE)) {
+            if (this.keyboardService.IsKeyDown(Keys.V)) {
+                this.SpawnBullet(clock, cast);
+            }
+            if (this.keyboardService.IsKeyDown(Keys.B)) {
                 this.SpawnBullet(clock, cast);
             }
         }
