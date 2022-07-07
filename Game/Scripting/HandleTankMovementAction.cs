@@ -8,7 +8,6 @@ namespace asteroid.script {
     class HandleTankMovementAction : genie.script.Action {
         
         private RaylibKeyboardService keyboardService;
-        private genie.cast.Actor? tank;
         private List<int> keysOfInterest;
         private int tankMovementVel;
 
@@ -27,6 +26,8 @@ namespace asteroid.script {
             
             // Grab the tank from the cast
             this.tank = cast.GetFirstActor("tank");
+            
+            Actor tank1 = cast.GetFirstActor("tank1");
 
             // Only move if ship is not null
             if (this.tank != null) {
