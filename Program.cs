@@ -57,7 +57,7 @@ namespace asteroid
             //Ship ship = new Ship("./asteroid/assets/spaceship/spaceship_yellow.png", 70, 50, W_SIZE.Item1/2, mothership.GetTopLeft().Item2 - 40, 0, 0, 180);
 
             Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 200, 200, 0, 0, 0, 0);
-            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 500, 700, 0, 0, 0, 0);
+            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 400, 400, 0, 0, 0, 0);
 
             // Give actors to cast
             //cast.AddActor("ship", ship);
