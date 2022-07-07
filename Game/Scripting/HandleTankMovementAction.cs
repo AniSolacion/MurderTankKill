@@ -37,26 +37,26 @@ namespace asteroid.script {
                 
                 // Change the velocity to the appropriate value and let MoveActorsAction handle the
                 // actual movement
-                if (keysState[Keys.LEFT]) {
+                if (keysState[Keys.A]) {
                     tank1.SetVx(-this.tankMovementVel);
                 }
-                if (keysState[Keys.RIGHT]) {
+                if (keysState[Keys.D]) {
                     tank1.SetVx(this.tankMovementVel);
                 }
-                if (keysState[Keys.DOWN]) {
+                if (keysState[Keys.S]) {
                     tank1.SetVy(this.tankMovementVel);
                 }
-                if (keysState[Keys.UP]) {
+                if (keysState[Keys.W]) {
                     tank1.SetVy(-this.tankMovementVel);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
-                if (!(keysState[Keys.LEFT] || keysState[Keys.RIGHT])) {
+                if (!(keysState[Keys.A] || keysState[Keys.D])) {
                     tank1.SetVx(0);
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
-                if (!(keysState[Keys.UP] || keysState[Keys.DOWN])) {
+                if (!(keysState[Keys.W] || keysState[Keys.S])) {
                     tank1.SetVy(0);
                 }
             }
@@ -68,26 +68,26 @@ namespace asteroid.script {
                 
                 // Change the velocity to the appropriate value and let MoveActorsAction handle the
                 // actual movement
-                if (keysState[Keys.LEFT]) {
+                if (keysState[Keys.J]) {
                     tank2.SetVx(-this.tankMovementVel);
                 }
-                if (keysState[Keys.RIGHT]) {
+                if (keysState[Keys.L]) {
                     tank2.SetVx(this.tankMovementVel);
                 }
-                if (keysState[Keys.DOWN]) {
+                if (keysState[Keys.K]) {
                     tank2.SetVy(this.tankMovementVel);
                 }
-                if (keysState[Keys.UP]) {
+                if (keysState[Keys.I]) {
                     tank2.SetVy(-this.tankMovementVel);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
-                if (!(keysState[Keys.LEFT] || keysState[Keys.RIGHT])) {
+                if (!(keysState[Keys.J] || keysState[Keys.L])) {
                     tank2.SetVx(0);
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
-                if (!(keysState[Keys.UP] || keysState[Keys.DOWN])) {
+                if (!(keysState[Keys.I] || keysState[Keys.K])) {
                     tank2.SetVy(0);
                 }
             }
