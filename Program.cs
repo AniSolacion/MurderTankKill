@@ -83,7 +83,7 @@ namespace asteroid
             // Add all update actions
             script.AddAction("update", new MoveActorsAction(1, physicsService));
             //script.AddAction("update", new HandleTankAsteroidsCollisionAction(1, physicsService, audioservice));
-            script.AddAction("update", new HandleBulletsAsteroidsCollisionAction(1, physicsService, audioservice));
+            //script.AddAction("update", new HandleBulletsAsteroidsCollisionAction(1, physicsService, audioservice));
 
             // Add all output actions
             script.AddAction("output", new DrawActorsAction(1, screenService));
