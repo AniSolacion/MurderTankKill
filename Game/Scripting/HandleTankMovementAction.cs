@@ -13,7 +13,6 @@ namespace asteroid.script {
 
         public HandleTankMovementAction(int priority, RaylibKeyboardService keyboardService) : base(priority) {
             this.keyboardService = keyboardService;
-            this.tank = null;
             this.tankMovementVel = 4;
             this.keysOfInterest = new List<int>();
             this.keysOfInterest.Add(Keys.LEFT);
@@ -25,14 +24,13 @@ namespace asteroid.script {
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
             
             // Grab the tank from the cast
-            this.tank = cast.GetFirstActor("tank");
 
             Actor tank1 = cast.GetFirstActor("tank1");
             Actor tank2 = cast.GetFirstActor("tank1");
 
 
             // Only move if ship is not null
-            if (this.tank1 != null) {
+            if (tank1 != null) {
                 
                 // Get the keysState from the keyboardService
                 Dictionary<int, bool> keysState = keyboardService.GetKeysState(this.keysOfInterest);
@@ -40,30 +38,30 @@ namespace asteroid.script {
                 // Change the velocity to the appropriate value and let MoveActorsAction handle the
                 // actual movement
                 if (keysState[Keys.LEFT]) {
-                    this.tank.SetVx(-this.tankMovementVel);
+                    tank1.SetVx(-this.tankMovementVel);
                 }
                 if (keysState[Keys.RIGHT]) {
-                    this.tank.SetVx(this.tankMovementVel);
+                    tank1.SetVx(this.tankMovementVel);
                 }
                 if (keysState[Keys.DOWN]) {
-                    this.tank.SetVy(this.tankMovementVel);
+                    tank1.SetVy(this.tankMovementVel);
                 }
                 if (keysState[Keys.UP]) {
-                    this.tank.SetVy(-this.tankMovementVel);
+                    tank1.SetVy(-this.tankMovementVel);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
                 if (!(keysState[Keys.LEFT] || keysState[Keys.RIGHT])) {
-                    this.tank.SetVx(0);
+                    tank1.SetVx(0);
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
                 if (!(keysState[Keys.UP] || keysState[Keys.DOWN])) {
-                    this.tank.SetVy(0);
+                    tank1.SetVy(0);
                 }
             }
 
-            if (this.tank2 != null) {
+            if (tank2 != null) {
                 
                 // Get the keysState from the keyboardService
                 Dictionary<int, bool> keysState = keyboardService.GetKeysState(this.keysOfInterest);
@@ -71,26 +69,26 @@ namespace asteroid.script {
                 // Change the velocity to the appropriate value and let MoveActorsAction handle the
                 // actual movement
                 if (keysState[Keys.LEFT]) {
-                    this.tank.SetVx(-this.tankMovementVel);
+                    tank2.SetVx(-this.tankMovementVel);
                 }
                 if (keysState[Keys.RIGHT]) {
-                    this.tank.SetVx(this.tankMovementVel);
+                    tank2.SetVx(this.tankMovementVel);
                 }
                 if (keysState[Keys.DOWN]) {
-                    this.tank.SetVy(this.tankMovementVel);
+                    tank2.SetVy(this.tankMovementVel);
                 }
                 if (keysState[Keys.UP]) {
-                    this.tank.SetVy(-this.tankMovementVel);
+                    tank2.SetVy(-this.tankMovementVel);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
                 if (!(keysState[Keys.LEFT] || keysState[Keys.RIGHT])) {
-                    this.tank.SetVx(0);
+                    tank2.SetVx(0);
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
                 if (!(keysState[Keys.UP] || keysState[Keys.DOWN])) {
-                    this.tank.SetVy(0);
+                    tank2.SetVy(0);
                 }
             }
         }
