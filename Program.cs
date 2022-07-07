@@ -56,8 +56,8 @@ namespace asteroid
             // Create the player
             //Ship ship = new Ship("./asteroid/assets/spaceship/spaceship_yellow.png", 70, 50, W_SIZE.Item1/2, mothership.GetTopLeft().Item2 - 40, 0, 0, 180);
 
-            Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 10, 10, 0, 0, 0, 0);
-            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
+            Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 200, 200, 0, 0, 0, 0);
+            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 500, 700, 0, 0, 0, 0);
 
             // Give actors to cast
             //cast.AddActor("ship", ship);
