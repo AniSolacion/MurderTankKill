@@ -1,43 +1,43 @@
-using genie;
-using genie.cast;
-using genie.script;
-using genie.services;
-using genie.services.raylib;
+// using genie;
+// using genie.cast;
+// using genie.script;
+// using genie.services;
+// using genie.services.raylib;
 
-using asteroid.cast;
+// using asteroid.cast;
 
-namespace asteroid.script {
-    class HandleBulletsAsteroidsCollisionAction : genie.script.Action {
+// namespace asteroid.script {
+//     class HandleBulletsAsteroidsCollisionAction : genie.script.Action {
         
-        // Member Variables
-        RaylibPhysicsService physicsService;
-        private List<Actor> bullets;
+//         // Member Variables
+//         RaylibPhysicsService physicsService;
+//         private List<Actor> bullets;
 
 
-        // Constructor
-        public HandleBulletsAsteroidsCollisionAction(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService) : base(priority) {
-            this.physicsService = physicsService;
-            this.bullets = new List<Actor>();
-        }
+//         // Constructor
+//         public HandleBulletsAsteroidsCollisionAction(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService) : base(priority) {
+//             this.physicsService = physicsService;
+//             this.bullets = new List<Actor>();
+//         }
 
-        public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
+//         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
 
-            // First, get a list of bullets out of the cast
-            bullets = cast.GetActors("bullets");
+//             // First, get a list of bullets out of the cast
+//             bullets = cast.GetActors("bullets");
 
-            // Check if any bullet collides with any asteroid
-            foreach (Asteroid asteroid in cast.GetActors("asteroids")) {
-                Actor? collidedBullet = this.physicsService.CheckCollisionList(asteroid, bullets);
-                if (collidedBullet != null) {
-                    cast.RemoveActor("bullets", collidedBullet);
-                    asteroid.TakeDamage(1);
+//             // Check if any bullet collides with any asteroid
+//             foreach (Asteroid asteroid in cast.GetActors("asteroids")) {
+//                 Actor? collidedBullet = this.physicsService.CheckCollisionList(asteroid, bullets);
+//                 if (collidedBullet != null) {
+//                     cast.RemoveActor("bullets", collidedBullet);
+//                     asteroid.TakeDamage(1);
 
-                    // Destroy asteroid if its health is 0
-                    if (asteroid.GetHP() <= 0) {
-                        cast.RemoveActor("asteroids", asteroid);
-                    }
-                }
-            }
+//                     // Destroy asteroid if its health is 0
+//                     if (asteroid.GetHP() <= 0) {
+//                         cast.RemoveActor("asteroids", asteroid);
+//                     }
+//                 }
+//             }
 
             // Instant Kill Astroid&Ship Collision
             // public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
@@ -57,6 +57,6 @@ namespace asteroid.script {
             //     }
             // }
         
-        }
-    }
-}
+//         }
+//     }
+// }
