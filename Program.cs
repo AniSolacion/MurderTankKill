@@ -57,6 +57,10 @@ namespace asteroid
             Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
             Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
 
+            //Start Button
+            StartGameButton startGameButton = new StartGameButton("./asteroid/assets/others/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
+            cast.AddActor("start_button", startGameButton);
+
             // Give actors to cast
             //cast.AddActor("ship", ship);
             cast.AddActor("tank1", tank1);
@@ -71,6 +75,7 @@ namespace asteroid
             startGameActions["input"] = new List<genie.script.Action>();
             startGameActions["update"] = new List<genie.script.Action>();
             startGameActions["output"] = new List<genie.script.Action>();
+
             startGameActions["input"].Add(new HandleTankMovementAction(2, keyboardService));
             startGameActions["input"].Add(new HandleShootingAction(2, (float)0.15, (0, -10), keyboardService, audioservice));
 
