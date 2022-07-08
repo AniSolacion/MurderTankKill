@@ -32,8 +32,8 @@ namespace asteroid.script
 
         private void SpawnBullet(Clock clock, Cast cast) {
 
-            Actor tank1 = cast.GetFirstActor("tank1");
-            Actor tank2 = cast.GetFirstActor("tank2");
+            Actor? tank1 = cast.GetFirstActor("tank1");
+            Actor? tank2 = cast.GetFirstActor("tank2");
 
             TimeSpan timeSinceLastShot = DateTime.Now - this.lastBulletSpawn;
             if (tank1 != null && timeSinceLastShot.TotalSeconds >= this.attackInterval) {
@@ -74,8 +74,8 @@ namespace asteroid.script
         {
             // Grab the tank from the cast
             // this.tank = cast.GetFirstActor("tank");
-            Actor tank1 = cast.GetFirstActor("tank1");
-            Actor tank2 = cast.GetFirstActor("tank2");
+            Actor? tank1 = cast.GetFirstActor("tank1");
+            Actor? tank2 = cast.GetFirstActor("tank2");
 
             // If the space key is down, spawn a new bullet
             if (this.keyboardService.IsKeyDown(Keys.V)) {

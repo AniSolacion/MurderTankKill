@@ -33,8 +33,8 @@ namespace asteroid.script {
             
             // Grab the tank from the cast
 
-            Actor tank1  = cast.GetFirstActor("tank1");
-            Actor tank2 = cast.GetFirstActor("tank2");
+            Actor? tank1  = cast.GetFirstActor("tank1");
+            Actor? tank2 = cast.GetFirstActor("tank2");
 
 
             // Only move if ship is not null
