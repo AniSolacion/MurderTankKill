@@ -30,7 +30,6 @@ namespace asteroid.script {
 
 
                 if(actor == tank1){
-
                     actorColor = Color.BLUE;
                 }
                 else if(actor == tank2){
