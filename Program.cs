@@ -35,6 +35,8 @@ namespace asteroid
             (int, int) W_SIZE = (900, 700);
             int TANK_WIDTH = 40;
             int TANK_LENGTH = 50;
+            int TURRET_WIDTH = 10;
+            int TURRET_LENGTH = 40;
             string SCREEN_TITLE = "Murder Tank Kill";
             int FPS = 120;
             
@@ -56,6 +58,8 @@ namespace asteroid
 
             Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
             Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
+            Turret turret1 = new Turret("", TURRET_WIDTH, TURRET_LENGTH, 100, 100 + (TANK_LENGTH / 2), 0, 0, 0, 5);
+            Turret turret2 = new Turret("", TURRET_WIDTH, TURRET_LENGTH, 800, 600 - (TANK_LENGTH / 2), 0, 0, 0, 5);
 
             //Start Button
             StartGameButton startGameButton = new StartGameButton("./asteroid/assets/others/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
@@ -65,7 +69,8 @@ namespace asteroid
             //cast.AddActor("ship", ship);
             cast.AddActor("tank1", tank1);
             cast.AddActor("tank2", tank2);
-
+            cast.AddActor("turret1", turret1);
+            cast.AddActor("turret2", turret2);
 
             // Create the script
             Script script = new Script();
