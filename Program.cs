@@ -33,8 +33,6 @@ namespace asteroid
         {
             // A few game constants
             (int, int) W_SIZE = (900, 700);
-            (int, int) START_POSITION_PLAYER_1 = (200, 200); // Top left (ish)
-            (int, int) START_POSITION_PLAYER_2 = (500, 700);
             int TANK_WIDTH = 40;
             int TANK_LENGTH = 50;
             string SCREEN_TITLE = "Murder Tank Kill";
@@ -56,8 +54,12 @@ namespace asteroid
             // Create the player
             //Ship ship = new Ship("./asteroid/assets/spaceship/spaceship_yellow.png", 70, 50, W_SIZE.Item1/2, mothership.GetTopLeft().Item2 - 40, 0, 0, 180);
 
-            Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 200, 200, 40, 40, 0, 0);
-            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 400, 400, 0, 0, 0, 0);
+            Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
+            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
+
+            //Start Button
+            StartGameButton startGameButton = new StartGameButton("./asteroid/assets/others/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
+            cast.AddActor("start_button", startGameButton);
 
             // Give actors to cast
             //cast.AddActor("ship", ship);
@@ -73,6 +75,7 @@ namespace asteroid
             startGameActions["input"] = new List<genie.script.Action>();
             startGameActions["update"] = new List<genie.script.Action>();
             startGameActions["output"] = new List<genie.script.Action>();
+
             startGameActions["input"].Add(new HandleTankMovementAction(2, keyboardService));
             startGameActions["input"].Add(new HandleShootingAction(2, (float)0.15, (0, -10), keyboardService, audioservice));
 
