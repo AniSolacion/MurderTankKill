@@ -84,6 +84,7 @@ namespace asteroid
             startGameActions["output"] = new List<genie.script.Action>();
 
             startGameActions["input"].Add(new HandleTankMovementAction(2, keyboardService));
+            //Change (0, -10) to the set direction of the rotated turrets---------------------*************
             startGameActions["input"].Add(new HandleShootingAction(2, (float)0.15, (0, -10), keyboardService, audioservice));
 
             // Add all input actions

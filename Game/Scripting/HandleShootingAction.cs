@@ -10,15 +10,16 @@ namespace asteroid.script
     {
 
         private RaylibKeyboardService keyboardService;
-        private genie.cast.Actor? tank;
-        private genie.cast.Actor? tank2;
+        private genie.cast.Actor? turret;
+        private genie.cast.Actor? turret2;
         private DateTime p1lastBulletSpawn;
         private DateTime p2lastBulletSpawn;
         private RaylibAudioService audioService;
         private float attackInterval;
+        private float ShootingDirection;
         private (float vx, float vy) bulletVel;
 
-        private int tankSelector = 0;
+        private int turretSelector = 0;
 
         
 
@@ -35,22 +36,22 @@ namespace asteroid.script
             this.audioService = audioService;
         }
 
-        private void SpawnBullet(Clock clock, Cast cast, int tankSelector) {
-            if (tankSelector == 1) {
-                tank = cast.GetFirstActor("tank1");
+        private void SpawnBullet(Clock clock, Cast cast, int turretSelector) {
+            if (turretSelector == 1) {
+                turret = cast.GetFirstActor("turret1");
             }
-            if (tankSelector == 2) {
-                tank2 = cast.GetFirstActor("tank2");
+            if (turretSelector == 2) {
+                turret2 = cast.GetFirstActor("turret2");
             }
 
             TimeSpan p1timeSinceLastShot = DateTime.Now - this.p1lastBulletSpawn;
-            if (tank != null && p1timeSinceLastShot.TotalSeconds >= this.attackInterval && tankSelector == 1) {
+            if (turret != null && p1timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 1) {
                 // Bullet's starting position should be the direction of the turret
-                float bulletX = tank.GetX();
-                float bulletY = tank.GetY() - (tank.GetHeight()/2);
+                float bulletX = turret.GetX();
+                float bulletY = turret.GetY() - (turret.GetHeight()/2);
 
                 // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./asteroid/assets/bullet.png", 20, 30, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
+                Actor bullet = new Actor("./Game/Asset/Bullet.png", 20, 30, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
                 cast.AddActor("bullets", bullet);
                 
                 // Play the shooting sound :)
@@ -58,16 +59,17 @@ namespace asteroid.script
 
                 // Reset lastBulletSpawn to Now
                 this.p1lastBulletSpawn = DateTime.Now;
-                tankSelector = 1;
+                turretSelector = 1;
             }
+
             TimeSpan p2timeSinceLastShot = DateTime.Now - this.p2lastBulletSpawn;
-            if (tank2 != null && p2timeSinceLastShot.TotalSeconds >= this.attackInterval && tankSelector == 2) {
+            if (turret2 != null && p2timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 2) {
                 // Bullet's starting position should be the direction of the turret
-                float bulletX = tank2.GetX();
-                float bulletY = tank2.GetY() - (tank2.GetHeight()/2);
+                float bulletX = turret2.GetX();
+                float bulletY = turret2.GetY() - (turret2.GetHeight()/2);
 
                 // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./asteroid/assets/bullet.png", 20, 30, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
+                Actor bullet = new Actor("./Game/Asset/Bullet.png", 20, 30, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
                 cast.AddActor("bullets", bullet);
                 
                 // Play the shooting sound :)
@@ -75,7 +77,7 @@ namespace asteroid.script
 
                 // Reset lastBulletSpawn to Now
                 this.p2lastBulletSpawn = DateTime.Now;
-                tankSelector = 2;
+                turretSelector = 2;
             }
         }
 
@@ -83,8 +85,8 @@ namespace asteroid.script
         {
             // Grab the tank from the cast
             // this.tank = cast.GetFirstActor("tank");
-            Actor? tank1 = cast.GetFirstActor("tank1");
-            Actor? tank2 = cast.GetFirstActor("tank2");
+            Actor? turret1 = cast.GetFirstActor("turret1");
+            Actor? turret2 = cast.GetFirstActor("turret2");
 
             // If the space key is down, spawn a new bullet
             if (this.keyboardService.IsKeyDown(Keys.V)) {
