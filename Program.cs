@@ -85,6 +85,7 @@ namespace asteroid
 
             startGameActions["input"].Add(new HandleTankMovementAction(2, keyboardService));
             //Change (0, -10) to the set direction of the rotated turrets---------------------*************
+            // They are currently only set to go up(-10).
             startGameActions["input"].Add(new HandleShootingAction(2, (float)0.15, (0, -10), keyboardService, audioservice));
 
             // Add all input actions
