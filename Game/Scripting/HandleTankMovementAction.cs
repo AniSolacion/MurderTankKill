@@ -27,6 +27,14 @@ namespace asteroid.script {
             this.keysOfInterest.Add(Keys.L);
             this.keysOfInterest.Add(Keys.K);
             this.keysOfInterest.Add(Keys.I);
+
+            //Player 1 Rotation Keys
+            this.keysOfInterest.Add(Keys.Q);
+            this.keysOfInterest.Add(Keys.E);
+
+            //Player 2 Rotation Keys
+            this.keysOfInterest.Add(Keys.U);
+            this.keysOfInterest.Add(Keys.O);
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
@@ -58,6 +66,13 @@ namespace asteroid.script {
                     tank1.SetVy(-this.tankMovementVel);
                 }
 
+                if (keysState[Keys.Q]) {
+                    tank1.SetRotation(this.tankMovementVel);
+                }
+                if (keysState[Keys.E]) {
+                    tank1.SetRotation(-this.tankMovementVel);
+                }
+
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
                 if (!(keysState[Keys.A] || keysState[Keys.D])) {
                     tank1.SetVx(0);
@@ -87,6 +102,13 @@ namespace asteroid.script {
                 }
                 if (keysState[Keys.I]) {
                     tank2.SetVy(-this.tankMovementVel);
+                }
+
+                if (keysState[Keys.U]) {
+                    tank2.SetRotation(this.tankMovementVel);
+                }
+                if (keysState[Keys.O]) {
+                    tank2.SetRotation(-this.tankMovementVel);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
