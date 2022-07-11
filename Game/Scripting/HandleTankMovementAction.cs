@@ -44,6 +44,9 @@ namespace asteroid.script {
             Actor? tank1  = cast.GetFirstActor("tank1");
             Actor? tank2 = cast.GetFirstActor("tank2");
 
+            Actor? turret1  = cast.GetFirstActor("turret1");
+            Actor? turret2 = cast.GetFirstActor("turret2");
+
 
             // Only move if ship is not null
             if (tank1 != null) {
@@ -55,38 +58,42 @@ namespace asteroid.script {
                 // actual movement
                 if (keysState[Keys.A]) {
                     tank1.SetVx(-this.tankMovementVel);
+                    turret1.SetVx(-this.tankMovementVel);
                 }
                 if (keysState[Keys.D]) {
                     tank1.SetVx(this.tankMovementVel);
+                    turret1.SetVx(this.tankMovementVel);
                 }
                 if (keysState[Keys.S]) {
                     tank1.SetVy(this.tankMovementVel);
+                    turret1.SetVy(this.tankMovementVel);
                 }
                 if (keysState[Keys.W]) {
                     tank1.SetVy(-this.tankMovementVel);
+                    turret1.SetVy(-this.tankMovementVel);
                 }
 
                 //Tank1 Rotation
-                if (keysState[Keys.Q]) {
-                    tank1.SetRotationVel(this.tankRotation);
-                    tank1.SetRotation(this.tankRotation);
-                }
                 if (keysState[Keys.E]) {
-                    tank1.SetRotationVel(-this.tankRotation);
-                    tank1.SetRotation(-this.tankRotation);
+                    turret1.SetRotationVel(this.tankRotation);
                 }
-                if (!(keysState[Keys.Q] || keysState[Keys.E])) {
-                    tank1.SetRotation(0);
+                if (keysState[Keys.Q]) {
+                    turret1.SetRotationVel(-this.tankRotation);
+                }
+                if (!(keysState[Keys.E] || keysState[Keys.Q])) {
+                    turret1.SetRotationVel(0);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
                 if (!(keysState[Keys.A] || keysState[Keys.D])) {
                     tank1.SetVx(0);
+                    turret1.SetVx(0);
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
                 if (!(keysState[Keys.W] || keysState[Keys.S])) {
                     tank1.SetVy(0);
+                    turret1.SetVy(0);
                 }
             }
 
@@ -99,38 +106,42 @@ namespace asteroid.script {
                 // actual movement
                 if (keysState[Keys.J]) {
                     tank2.SetVx(-this.tankMovementVel);
+                    turret2.SetVx(-this.tankMovementVel);
                 }
                 if (keysState[Keys.L]) {
                     tank2.SetVx(this.tankMovementVel);
+                    turret2.SetVx(this.tankMovementVel);
                 }
                 if (keysState[Keys.K]) {
                     tank2.SetVy(this.tankMovementVel);
+                    turret2.SetVy(this.tankMovementVel);
                 }
                 if (keysState[Keys.I]) {
                     tank2.SetVy(-this.tankMovementVel);
+                    turret2.SetVy(-this.tankMovementVel);
                 }
 
                 //Tank2 Rotation
-                if (keysState[Keys.U]) {
-                    tank2.SetRotationVel(this.tankRotation);
-                    tank2.SetRotation(this.tankRotation);
-                }
                 if (keysState[Keys.O]) {
-                    tank2.SetRotationVel(-this.tankRotation);
-                    tank2.SetRotation(-this.tankRotation);
+                    turret2.SetRotationVel(this.tankRotation);
+                }
+                if (keysState[Keys.U]) {
+                    turret2.SetRotationVel(-this.tankRotation);
                 }
                 if (!(keysState[Keys.U] || keysState[Keys.O])) {
-                    tank2.SetRotation(0);
+                    turret2.SetRotationVel(0);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
                 if (!(keysState[Keys.J] || keysState[Keys.L])) {
                     tank2.SetVx(0);
+                    turret2.SetVx(0);
                 }
 
                 // If none of the UP or DOWN keys are down, y-velocity is 0
                 if (!(keysState[Keys.I] || keysState[Keys.K])) {
                     tank2.SetVy(0);
+                    turret2.SetVy(0);
                 }
             }
         }

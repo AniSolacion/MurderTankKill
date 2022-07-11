@@ -56,10 +56,12 @@ namespace asteroid
             // Create the player
             //Ship ship = new Ship("./asteroid/assets/spaceship/spaceship_yellow.png", 70, 50, W_SIZE.Item1/2, mothership.GetTopLeft().Item2 - 40, 0, 0, 180);
 
-            Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
-            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
-            Turret turret1 = new Turret("", TURRET_WIDTH, TURRET_LENGTH, 100, 100 + (TANK_LENGTH / 2), 0, 0, 0, 5);
-            Turret turret2 = new Turret("", TURRET_WIDTH, TURRET_LENGTH, 800, 600 - (TANK_LENGTH / 2), 0, 0, 0, 5);
+            //"" - Needs to point to an image to rotate something.
+            Tank tank1 = new Tank("./Game/Asset/Tank.png", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
+            Tank tank2 = new Tank("./Game/Asset/Tank.png", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
+            Turret turret1 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 100, 100, 0, 0, 0, 5);
+            Turret turret2 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 800, 600, 0, 0, 0, 5);
+            // Orginal Turret Locations  - (## + (TANK_LENGTH / 2))
 
             //Start Button
             StartGameButton startGameButton = new StartGameButton("./asteroid/assets/others/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
