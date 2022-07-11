@@ -54,8 +54,8 @@ namespace asteroid
             // Create the player
             //Ship ship = new Ship("./asteroid/assets/spaceship/spaceship_yellow.png", 70, 50, W_SIZE.Item1/2, mothership.GetTopLeft().Item2 - 40, 0, 0, 180);
 
-            Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
-            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
+            Tank tank1 = new Tank("", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 15, 15);
+            Tank tank2 = new Tank("", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 15, 15);
 
             //Start Button
             StartGameButton startGameButton = new StartGameButton("./asteroid/assets/others/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
