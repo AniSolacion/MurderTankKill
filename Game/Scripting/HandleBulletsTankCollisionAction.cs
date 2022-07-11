@@ -28,10 +28,6 @@ namespace asteroid.script {
             // First, get a list of bullets out of the cast
             bullets = cast.GetActors("bullets");
 
-            tank1 = cast.GetFirstActor("tank1");
-            tank1 = cast.GetFirstActor("tank2");
-
-
             // Check if any bullet collides with any asteroid
             foreach (Bullet bullet in cast.GetActors("bullets")) {
                 Actor? collidedBullet = this.physicsService.CheckCollisionList(tank1, bullets);
