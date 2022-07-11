@@ -10,7 +10,7 @@ namespace asteroid.script {
         private RaylibKeyboardService keyboardService;
         private List<int> keysOfInterest;
         private int tankMovementVel = 10;
-
+        private int tankRotation = 15;
         public HandleTankMovementAction(int priority, RaylibKeyboardService keyboardService) : base(priority) {
             this.keyboardService = keyboardService;
             this.tankMovementVel = 4;
@@ -27,6 +27,14 @@ namespace asteroid.script {
             this.keysOfInterest.Add(Keys.L);
             this.keysOfInterest.Add(Keys.K);
             this.keysOfInterest.Add(Keys.I);
+
+            //Player 1 Rotation Keys
+            this.keysOfInterest.Add(Keys.Q);
+            this.keysOfInterest.Add(Keys.E);
+
+            //Player 2 Rotation Keys
+            this.keysOfInterest.Add(Keys.U);
+            this.keysOfInterest.Add(Keys.O);
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
@@ -58,6 +66,19 @@ namespace asteroid.script {
                     tank1.SetVy(-this.tankMovementVel);
                 }
 
+                //Tank1 Rotation
+                if (keysState[Keys.Q]) {
+                    tank1.SetRotationVel(this.tankRotation);
+                    tank1.SetRotation(this.tankRotation);
+                }
+                if (keysState[Keys.E]) {
+                    tank1.SetRotationVel(-this.tankRotation);
+                    tank1.SetRotation(-this.tankRotation);
+                }
+                if (!(keysState[Keys.Q] || keysState[Keys.E])) {
+                    tank1.SetRotation(0);
+                }
+
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
                 if (!(keysState[Keys.A] || keysState[Keys.D])) {
                     tank1.SetVx(0);
@@ -87,6 +108,19 @@ namespace asteroid.script {
                 }
                 if (keysState[Keys.I]) {
                     tank2.SetVy(-this.tankMovementVel);
+                }
+
+                //Tank2 Rotation
+                if (keysState[Keys.U]) {
+                    tank2.SetRotationVel(this.tankRotation);
+                    tank2.SetRotation(this.tankRotation);
+                }
+                if (keysState[Keys.O]) {
+                    tank2.SetRotationVel(-this.tankRotation);
+                    tank2.SetRotation(-this.tankRotation);
+                }
+                if (!(keysState[Keys.U] || keysState[Keys.O])) {
+                    tank2.SetRotation(0);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
