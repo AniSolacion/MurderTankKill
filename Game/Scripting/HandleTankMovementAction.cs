@@ -11,9 +11,12 @@ namespace asteroid.script {
         private List<int> keysOfInterest;
         private int tankMovementVel = 10;
 
+        private int tankRotationVel = 10;
+
         public HandleTankMovementAction(int priority, RaylibKeyboardService keyboardService) : base(priority) {
             this.keyboardService = keyboardService;
             this.tankMovementVel = 4;
+            this.tankRotationVel = 4;
             this.keysOfInterest = new List<int>();
 
             //PLayer 1 Movement Keys
@@ -67,10 +70,10 @@ namespace asteroid.script {
                 }
 
                 if (keysState[Keys.Q]) {
-                    tank1.SetRotation(this.tankMovementVel);
+                    tank1.SetRotation(this.tankRotationVel);
                 }
                 if (keysState[Keys.E]) {
-                    tank1.SetRotation(-this.tankMovementVel);
+                    tank1.SetRotation(-this.tankRotationVel);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
@@ -105,10 +108,10 @@ namespace asteroid.script {
                 }
 
                 if (keysState[Keys.U]) {
-                    tank2.SetRotation(this.tankMovementVel);
+                    tank2.SetRotation(this.tankRotationVel);
                 }
                 if (keysState[Keys.O]) {
-                    tank2.SetRotation(-this.tankMovementVel);
+                    tank2.SetRotation(-this.tankRotationVel);
                 }
 
                 // If none of the LEFT or RIGHT keys are down, x-velocity is 0
