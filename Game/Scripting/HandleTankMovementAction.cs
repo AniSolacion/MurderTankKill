@@ -10,7 +10,7 @@ namespace asteroid.script {
         private RaylibKeyboardService keyboardService;
         private List<int> keysOfInterest;
         private int tankMovementVel = 10;
-        private int tankRotation = 15;
+        private int tankRotation = 5;
         public HandleTankMovementAction(int priority, RaylibKeyboardService keyboardService) : base(priority) {
             this.keyboardService = keyboardService;
             this.tankMovementVel = 4;
