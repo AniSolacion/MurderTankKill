@@ -45,17 +45,17 @@ namespace asteroid.script {
                     }
                 }
             }
-            
+            /*
             if (this.tank2 != null) {
-                foreach (Bullet bullet in cast.GetActors("bullets")) {
-                    Actor? collidedBullet = this.physicsService.CheckCollisionList(tank2, bullets);
-                    if (collidedBullet != null) {
-                        cast.RemoveActor("bullets", collidedBullet);
+                foreach (Actor bullet in cast.GetActors("bullets")) {
+                    if (this.physicsService.CheckCollision(this.tank2, bullet)) {
+                        cast.RemoveActor("bullets", bullet);
                         cast.RemoveActor("tank2", tank2);
                         cast.RemoveActor("turret2", turret2);
                     }
                 }
             }
+            */
             
         }
     }
