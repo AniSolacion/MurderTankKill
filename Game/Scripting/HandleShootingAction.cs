@@ -51,7 +51,7 @@ namespace asteroid.script
                 float bulletY = turret.GetY() - (turret.GetHeight()/2);
 
                 // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./Game/Asset/Bullet.png", 20, 30, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
+                Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
                 cast.AddActor("bullets", bullet);
                 
                 // Play the shooting sound :)
@@ -69,7 +69,7 @@ namespace asteroid.script
                 float bulletY = turret2.GetY() - (turret2.GetHeight()/2);
 
                 // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./Game/Asset/Bullet.png", 20, 30, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
+                Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
                 cast.AddActor("bullets", bullet);
                 
                 // Play the shooting sound :)
