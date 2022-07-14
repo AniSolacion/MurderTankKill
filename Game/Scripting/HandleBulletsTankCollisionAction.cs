@@ -45,7 +45,7 @@ namespace asteroid.script {
                     }
                 }
             }
-            /*
+            
             if (this.tank2 != null) {
                 foreach (Actor bullet in cast.GetActors("bullets")) {
                     if (this.physicsService.CheckCollision(this.tank2, bullet)) {
@@ -55,8 +55,6 @@ namespace asteroid.script {
                     }
                 }
             }
-            */
-            
         }
     }
 }
