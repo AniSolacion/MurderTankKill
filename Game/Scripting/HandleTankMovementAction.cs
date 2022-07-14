@@ -41,10 +41,10 @@ namespace asteroid.script {
             
             // Grab the tank from the cast
 
-            Actor? tank1  = cast.GetFirstActor("tank1");
+            Actor? tank1 = cast.GetFirstActor("tank1");
             Actor? tank2 = cast.GetFirstActor("tank2");
 
-            Actor? turret1  = cast.GetFirstActor("turret1");
+            Actor? turret1 = cast.GetFirstActor("turret1");
             Actor? turret2 = cast.GetFirstActor("turret2");
 
 

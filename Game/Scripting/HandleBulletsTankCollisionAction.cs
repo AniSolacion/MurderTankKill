@@ -12,49 +12,47 @@ namespace asteroid.script {
         // Member Variables
         RaylibPhysicsService physicsService;
         private List<Actor> bullets;
-        private genie.cast.Actor tank1;
-        private genie.cast.Actor tank2;
+        private genie.cast.Actor? tank1;
+        private genie.cast.Actor? tank2;
+        private genie.cast.Actor? turret1;
+        private genie.cast.Actor? turret2;
         // Constructor
         public HandleBulletsTankCollisionAction(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService) : base(priority) {
             this.physicsService = physicsService;
             this.bullets = new List<Actor>();
+            this.tank1 = null;
+            this.tank2 = null;
+            this.turret1 = null;
+            this.turret2 = null;
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
 
             // First, get a list of bullets out of the cast
             bullets = cast.GetActors("bullets");
+            this.tank1 = cast.GetFirstActor("tank1");
+            this.tank2 = cast.GetFirstActor("tank2");
+            this.turret1 = cast.GetFirstActor("turret1");
+            this.turret2 = cast.GetFirstActor("turret2");
 
-            // Check if any bullet collides with any asteroid
-            foreach (Bullet bullet in cast.GetActors("bullets")) {
-                Actor? collidedBullet = this.physicsService.CheckCollisionList(tank1, bullets);
-                if (collidedBullet != null) {
-                    cast.RemoveActor("bullets", collidedBullet);
-                    cast.RemoveActor("tank1", tank1);
-
-                    // cast.RemoveActor("bullets", collidedBullet);
-                    // asteroid.TakeDamage(1);
-
-                    // // Destroy asteroid if its health is 0
-                    // if (asteroid.GetHP() <= 0) {
-                    //     cast.RemoveActor("asteroids", asteroid);
-                    // }
+            if (this.tank1 != null) {
+                // Check if any bullet collides with any asteroid
+                foreach (Actor bullet in cast.GetActors("bullets")) {
+                    if (this.physicsService.CheckCollision(this.tank1, bullet)) {
+                        cast.RemoveActor("bullets", bullet);
+                        cast.RemoveActor("tank1", tank1);
+                        cast.RemoveActor("turret1", turret1);
+                    }
                 }
             }
-
-            foreach (Tank tank2 in cast.GetActors("tank2")) {
-                Actor? collidedBullet = this.physicsService.CheckCollisionList(tank2, bullets);
-                if (collidedBullet != null) {
-                    cast.RemoveActor("bullets", collidedBullet);
-                    cast.RemoveActor("tank2", tank2);
-
-                    // cast.RemoveActor("bullets", collidedBullet);
-                    // asteroid.TakeDamage(1);
-
-                    // // Destroy asteroid if its health is 0
-                    // if (asteroid.GetHP() <= 0) {
-                    //     cast.RemoveActor("asteroids", asteroid);
-                    // }
+            
+            if (this.tank2 != null) {
+                foreach (Actor bullet in cast.GetActors("bullets")) {
+                    if (this.physicsService.CheckCollision(this.tank2, bullet)) {
+                        cast.RemoveActor("bullets", bullet);
+                        cast.RemoveActor("tank2", tank2);
+                        cast.RemoveActor("turret2", turret2);
+                    }
                 }
             }
         }
