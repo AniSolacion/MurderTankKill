@@ -73,12 +73,12 @@ namespace asteroid.script {
                     turret1.SetVy(-this.tankMovementVel);
                 }
 
-                //Tank1 Rotation
+                //Turret1 Rotation
                 if (keysState[Keys.E]) {
-                    turret1.SetRotationVel(this.tankRotation);
+                    turret1.SetRotationVel(this.tankRotation % 360);
                 }
                 if (keysState[Keys.Q]) {
-                    turret1.SetRotationVel(-this.tankRotation);
+                    turret1.SetRotationVel(-this.tankRotation % 360);
                 }
                 if (!(keysState[Keys.E] || keysState[Keys.Q])) {
                     turret1.SetRotationVel(0);
@@ -121,12 +121,12 @@ namespace asteroid.script {
                     turret2.SetVy(-this.tankMovementVel);
                 }
 
-                //Tank2 Rotation
+                //Turret2 Rotation
                 if (keysState[Keys.O]) {
-                    turret2.SetRotationVel(this.tankRotation);
+                    turret2.SetRotationVel(this.tankRotation % 360);
                 }
                 if (keysState[Keys.U]) {
-                    turret2.SetRotationVel(-this.tankRotation);
+                    turret2.SetRotationVel(-this.tankRotation % 360);
                 }
                 if (!(keysState[Keys.U] || keysState[Keys.O])) {
                     turret2.SetRotationVel(0);

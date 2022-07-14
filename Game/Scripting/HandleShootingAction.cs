@@ -46,7 +46,9 @@ namespace asteroid.script
 
             TimeSpan p1timeSinceLastShot = DateTime.Now - this.p1lastBulletSpawn;
             if (turret != null && p1timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 1) {
-                // Bullet's starting position should be the direction of the turret
+                // Bullet's starting position should be the tip of the turret and direction
+                //Calculate turret tip == turret location + direction of 1/2 height
+                
                 float bulletX = turret.GetX();
                 float bulletY = turret.GetY() - (turret.GetHeight()/2);
 

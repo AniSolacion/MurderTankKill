@@ -12,4 +12,9 @@ namespace asteroid.cast {
 
         }
     }
+    // public void SetRotation(float rotation) {
+    //         if (this.rotation >= 360 || this.rotation <= -360) {
+    //            rotation == 0; 
+    //         }
+    //     }
 }
