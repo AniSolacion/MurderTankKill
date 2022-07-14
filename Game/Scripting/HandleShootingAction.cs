@@ -51,6 +51,14 @@ namespace asteroid.script
                 
                 float bulletX = turret.GetX();
                 float bulletY = turret.GetY() - turret.GetHeight();
+            
+                double angle = 0;
+                double pi = Math.PI;
+                angle = (double)turret.GetRotation();
+                // angle = (double)turret2.GetRotation();
+                double convert = pi/180*angle;
+                this.bulletVel.vx = (float)(-Math.Cos(convert));
+                this.bulletVel.vy = (float)(Math.Sin(convert));
 
                 // Create the bullet and put it in the cast
                 Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
