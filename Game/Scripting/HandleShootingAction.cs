@@ -48,10 +48,7 @@ namespace asteroid.script
             if (turret != null && p1timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 1) {
                 // Bullet's starting position should be the tip of the turret and direction
                 //Calculate turret tip == turret location + direction of 1/2 height
-                
-                float bulletX = turret.GetX();
-                float bulletY = turret.GetY() - turret.GetHeight();
-            
+
                 double angle = 0;
                 double pi = Math.PI;
                 angle = (double)turret.GetRotation();
@@ -60,6 +57,9 @@ namespace asteroid.script
                 this.bulletVel.vx = (float)(-Math.Cos(convert));
                 this.bulletVel.vy = (float)(Math.Sin(convert));
 
+                float bulletX = turret.GetX() + (float)(Math.Cos(angle)) * turret.GetHeight();
+                float bulletY = turret.GetY() + (float)(Math.Sin(angle)) * turret.GetHeight();
+            
                 // Create the bullet and put it in the cast
                 Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
                 cast.AddActor("bullets", bullet);
