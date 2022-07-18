@@ -79,7 +79,7 @@ namespace asteroid
             Wall wall1 = new Wall("", 4, 2, 200, 50, 0, 0, 0, 0);
             Wall wall2 = new Wall("", 20, 2, 70, 200, 0, 0, 0, 0);
             Wall wall3 = new Wall("", 15, 2, 5, 10, 0, 0, 0, 0);
-            Wall wallspin = new Wall("", 200, 2, 300, 300, 0, 0, 0, 1);
+            Wall wall4 = new Wall("", 200, 2, 300, 300, 0, 0, 0, 1);
 
             // Give actors to cast
             cast.AddActor("tank1", tank1);
@@ -90,6 +90,10 @@ namespace asteroid
             cast.AddActor("maxY", wallMaxY);
             cast.AddActor("minX", wallMinX);
             cast.AddActor("minY", wallMinY);
+            cast.AddActor("wall", wall1);
+            cast.AddActor("wall", wall2);
+            cast.AddActor("wall", wall3);
+            cast.AddActor("wall", wall4);
             
 
             // Create the script
