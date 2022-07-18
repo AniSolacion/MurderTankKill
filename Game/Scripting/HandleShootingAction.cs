@@ -3,6 +3,7 @@ using genie.cast;
 using genie.script;
 using genie.services;
 using genie.services.raylib;
+using asteroid.cast;
 
 namespace asteroid.script
 {
@@ -60,7 +61,7 @@ namespace asteroid.script
                 float bulletY = turret.GetY() + (float)(Math.Sin(convert)) * turret.GetWidth();
             
                 // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./Game/Asset/Bullet.png", 10, 10, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
+                Bullet bullet = new Bullet("./Game/Asset/Bullet.png", 10, 10, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy, 3);
                 cast.AddActor("bullets", bullet);
                 
                 // Play the shooting sound :)
