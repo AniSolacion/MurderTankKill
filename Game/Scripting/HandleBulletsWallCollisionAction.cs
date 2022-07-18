@@ -36,15 +36,22 @@ namespace asteroid.script {
                 foreach (Actor bullet in cast.GetActors("bullets")) {
                     if (bullet.GetX() - bullet.GetWidth() < MIN_X.GetX()) {
                         bullet.SetVx(-bullet.GetVx());
+                        bullet.setBulletCounter(bullet.getBulletCounter() - 1);
                     }
                     if (bullet.GetX() + bullet.GetWidth() > MAX_X.GetX()) {
                         bullet.SetVx(-bullet.GetVx());
+                        bullet.setBulletCounter(bullet.getBulletCounter() - 1);
                     }
                     if (bullet.GetY() - bullet.GetHeight() < MIN_Y.GetY()) {
                         bullet.SetVy(-bullet.GetVy());
+                        bullet.setBulletCounter(bullet.getBulletCounter() - 1);
                     }
                     if (bullet.GetY() + bullet.GetHeight() > MAX_Y.GetY()) {
                         bullet.SetVy(-bullet.GetVy());
+                        bullet.setBulletCounter(bullet.getBulletCounter() - 1);
+                    }
+                    if{bullet.getBulletCounter() = 0}{
+                        cast.RemoveActor("bullets", bullet);
                     }
                 }
             }
