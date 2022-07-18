@@ -52,13 +52,12 @@ namespace asteroid.script
                 double angle = 0;
                 double pi = Math.PI;
                 angle = (double)turret.GetRotation();
-                // angle = (double)turret2.GetRotation();
                 double convert = pi/180*angle;
-                this.bulletVel.vx = (float)(-Math.Cos(convert));
+                this.bulletVel.vx = (float)(Math.Cos(convert));
                 this.bulletVel.vy = (float)(Math.Sin(convert));
 
-                float bulletX = turret.GetX() + (float)(Math.Cos(angle)) * turret.GetHeight();
-                float bulletY = turret.GetY() + (float)(Math.Sin(angle)) * turret.GetHeight();
+                float bulletX = turret.GetX() + (float)(Math.Cos(convert)) * turret.GetHeight();
+                float bulletY = turret.GetY() + (float)(Math.Sin(convert)) * turret.GetHeight();
             
                 // Create the bullet and put it in the cast
                 Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
@@ -82,11 +81,11 @@ namespace asteroid.script
                 double pi = Math.PI;
                 angle = (double)turret2.GetRotation();
                 double convert = pi/180*angle;
-                this.bulletVel.vx = (float)(-Math.Cos(convert));
+                this.bulletVel.vx = (float)(Math.Cos(convert));
                 this.bulletVel.vy = (float)(Math.Sin(convert));
 
-                float bulletX2 = turret2.GetX() + (float)(Math.Cos(angle)) * turret2.GetHeight();
-                float bulletY2 = turret2.GetY() + (float)(Math.Sin(angle)) * turret2.GetHeight();
+                float bulletX2 = turret2.GetX() + (float)(Math.Cos(convert)) * turret2.GetHeight();
+                float bulletY2 = turret2.GetY() + (float)(Math.Sin(convert)) * turret2.GetHeight();
 
                 // Create the bullet and put it in the cast
                 Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX2, bulletY2, this.bulletVel.vx, this.bulletVel.vy);
