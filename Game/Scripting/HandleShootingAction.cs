@@ -81,13 +81,15 @@ namespace asteroid.script
                 double angle = 0;
                 double pi = Math.PI;
                 angle = (double)turret2.GetRotation();
-                // angle = (double)turret2.GetRotation();
                 double convert = pi/180*angle;
                 this.bulletVel.vx = (float)(-Math.Cos(convert));
                 this.bulletVel.vy = (float)(Math.Sin(convert));
 
+                float bulletX2 = turret2.GetX() + (float)(Math.Cos(angle)) * turret2.GetHeight();
+                float bulletY2 = turret2.GetY() + (float)(Math.Sin(angle)) * turret2.GetHeight();
+
                 // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vy, this.bulletVel.vx);
+                Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX2, bulletY2, this.bulletVel.vy, this.bulletVel.vx);
                 cast.AddActor("bullets", bullet);
                 
                 // Play the shooting sound :)
