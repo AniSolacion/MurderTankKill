@@ -47,7 +47,7 @@ namespace genie.cast {
         private float previousX;
         private float previousY;
 
-
+        private int counter;
         // Public methods:
 
         // Constructor
@@ -55,7 +55,7 @@ namespace genie.cast {
                     float x = 0, float y = 0,
                     float vx = 0, float vy = 0,
                     float rotation = 0, float rotationVel = 0,
-                    bool flipped = false) {
+                    int counter = 0) {
             this.path = path;
 
             this.width = width;
@@ -70,12 +70,21 @@ namespace genie.cast {
             this.rotation = rotation;
             this.rotationVel = rotationVel;
 
+            this.counter = counter;
+
             this.flipped = flipped;
 
             this.previousX = x;
             this.previousY = y;
         }
         
+        public int getBulletCounter() {
+            return counter;
+        }
+
+        public void setBulletCounter (int change) {
+            this.counter = change;
+        }
         
         // Set/Get methods for path
         public string GetPath() {

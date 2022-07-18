@@ -10,34 +10,51 @@ namespace asteroid.script {
     class HandleBulletsWallCollisionAction : genie.script.Action {
         
         // Member Variables
-        RaylibPhysicsService physicsService;
-        private List<Actor> bullets;
-        private genie.cast.Actor? tank1;
-        private genie.cast.Actor? tank2;
-        private genie.cast.Actor? turret1;
-        private genie.cast.Actor? turret2;
-        // Constructor
-        public HandleBulletsWallCollisionAction(int priority, RaylibPhysicsService physicsService, RaylibAudioService audioService) : base(priority) {
-            this.physicsService = physicsService;
-            this.bullets = new List<Actor>();
-            this.tank1 = null;
-            this.tank2 = null;
-            this.turret1 = null;
-            this.turret2 = null;
+        private genie.cast.Actor? bullets;
+        private genie.cast.Actor? MAX_X;
+        private genie.cast.Actor? MAX_Y;
+        private genie.cast.Actor? MIN_X;
+        private genie.cast.Actor? MIN_Y;
+        
+
+        public HandleBulletsWallCollisionAction(int priority) : base(priority) {
+            this.bullets = null;
+            MAX_X = null;
+            MIN_X = null;
+            MAX_Y = null;
+            MIN_Y = null;
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
+            this.MAX_X = cast.GetFirstActor("maxX");
+            this.MAX_Y = cast.GetFirstActor("maxY");
+            this.MIN_X = cast.GetFirstActor("minX");
+            this.MIN_Y = cast.GetFirstActor("minY");
+            this.bullets = cast.GetFirstActor("bullets");
 
-            // First, get a list of bullets out of the cast
-            bullets = cast.GetActors("bullets");
-
-            //Bullet Rotation
-            // if(bullets.GetY() == wallMaxY.GetMaxY() || bullets.GetY() == wallMinY.GetMinY()){
-            //     bullets.SetVy(-bullets.GetVy());
-            // }
-            // if(bullets.GetX() == wallMaxX.GetMaxX() || bullets.GetX() == wallMinX.GetMinX()){
-            //     bullets.SetVx(-bullets.GetVy());
-            // }
+            if (this.bullets != null) {
+                foreach (Actor bullet in cast.GetActors("bullets")) {
+                    if (bullet.GetX() - bullet.GetWidth() < MIN_X.GetX()) {
+                        bullet.SetVx(-bullet.GetVx());
+                        bullet.setBulletCounter(bullet.getBulletCounter() + 1);
+                    }
+                    if (bullet.GetX() + bullet.GetWidth() > MAX_X.GetX()) {
+                        bullet.SetVx(-bullet.GetVx());
+                        bullet.setBulletCounter(bullet.getBulletCounter() + 1);
+                    }
+                    if (bullet.GetY() - bullet.GetHeight() < MIN_Y.GetY()) {
+                        bullet.SetVy(-bullet.GetVy());
+                        bullet.setBulletCounter(bullet.getBulletCounter() + 1);
+                    }
+                    if (bullet.GetY() + bullet.GetHeight() > MAX_Y.GetY()) {
+                        bullet.SetVy(-bullet.GetVy());
+                        bullet.setBulletCounter(bullet.getBulletCounter() + 1);
+                    }
+                    if(bullet.getBulletCounter() == 3){
+                        cast.RemoveActor("bullets", bullet);
+                    }
+                }
+            }
         }
     }
 }

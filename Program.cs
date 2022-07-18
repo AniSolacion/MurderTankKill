@@ -34,9 +34,9 @@ namespace asteroid
             // A few game constants
             (int, int) W_SIZE = (900, 700);
             int TANK_WIDTH = 40;
-            int TANK_LENGTH = 50;
-            int TURRET_WIDTH = 10;
-            int TURRET_LENGTH = 40;
+            int TANK_LENGTH = 40;
+            int TURRET_WIDTH = 40;
+            int TURRET_LENGTH = 10;
             string SCREEN_TITLE = "Murder Tank Kill";
             int FPS = 120;
             
@@ -56,7 +56,8 @@ namespace asteroid
             // Create the player
             //Ship ship = new Ship("./asteroid/assets/spaceship/spaceship_yellow.png", 70, 50, W_SIZE.Item1/2, mothership.GetTopLeft().Item2 - 40, 0, 0, 180);
 
-            //"" - Needs to point to an image to rotate something.
+            //"" - Needs to point to an image to rotate something. 
+            // Tank Color: #62871e
             Tank tank1 = new Tank("./Game/Asset/Tank.png", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
             Tank tank2 = new Tank("./Game/Asset/Tank.png", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
             Turret turret1 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 100, 100, 0, 0, 0, 5);
@@ -64,7 +65,7 @@ namespace asteroid
             // Orginal Turret Locations  - (## + (TANK_LENGTH / 2))
 
             //Start Button
-            StartGameButton startGameButton = new StartGameButton("./asteroid/assets/others/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
+            StartGameButton startGameButton = new StartGameButton("./Game/Asset/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
             cast.AddActor("start_button", startGameButton);
 
             // Right Wall
@@ -86,6 +87,7 @@ namespace asteroid
             cast.AddActor("tank2", tank2);
             cast.AddActor("turret1", turret1);
             cast.AddActor("turret2", turret2);
+
             cast.AddActor("maxX", wallMaxX);
             cast.AddActor("maxY", wallMaxY);
             cast.AddActor("minX", wallMinX);
@@ -118,6 +120,13 @@ namespace asteroid
             // Add all update actions
             script.AddAction("update", new MoveActorsAction(1, physicsService));
             script.AddAction("update", new HandleBulletsTankCollisionAction(1, physicsService, audioservice));
+            script.AddAction("update", new HandleBulletsWallCollisionAction(1));
+
+            //Apply for each bullet
+            // foreach(Bullet bullet in ){
+            //     script.AddAction("update", new HandleBulletsWallCollisionAction(1));
+            // }
+
             script.AddAction("update", new HandleTankWallCollisionAction(1));
 
             // Add all output actions

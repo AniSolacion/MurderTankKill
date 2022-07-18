@@ -19,11 +19,12 @@ namespace asteroid.script {
 
             Actor? tank1 = cast.GetFirstActor("tank1");
             Actor? tank2 = cast.GetFirstActor("tank2");
+            Actor? startButton = cast.GetFirstActor("start_button");
             
             // First, fill the screen with white every frame, get ready to draw more stuff
             this.screenService.FillScreen(Color.WHITE);
 
-            Color actorColor = Color.BLACK;
+            Color actorColor = Color.WHITE;
 
             // Draw all actors as rectangles for now.
             foreach (Actor actor in cast.GetAllActors()) {
@@ -35,8 +36,11 @@ namespace asteroid.script {
                 else if(actor == tank2){
                     actorColor = Color.RED;
                 }
-                else{
+                else if (actor == startButton) {
                     actorColor = Color.BLACK;
+                }
+                else {
+                    actorColor = Color.WHITE;
                 }
                 // Color actorColor = actor is Tank ? Color.BLUE : Color.BLACK;
                 this.screenService.DrawRectangle(actor.GetPosition(), actor.GetWidth(), actor.GetHeight(), actorColor, 5);
