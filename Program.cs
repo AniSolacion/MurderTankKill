@@ -34,9 +34,9 @@ namespace asteroid
             // A few game constants
             (int, int) W_SIZE = (900, 700);
             int TANK_WIDTH = 40;
-            int TANK_LENGTH = 40;
+            int TANK_LENGTH = 50;
             int TURRET_WIDTH = 10;
-            int TURRET_LENGTH = 50;
+            int TURRET_LENGTH = 40;
             string SCREEN_TITLE = "Murder Tank Kill";
             int FPS = 120;
             
@@ -59,8 +59,8 @@ namespace asteroid
             //"" - Needs to point to an image to rotate something.
             Tank tank1 = new Tank("./Game/Asset/Tank.png", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
             Tank tank2 = new Tank("./Game/Asset/Tank.png", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
-            Turret turret1 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 100, 100, 0, 0, 0, 0);
-            Turret turret2 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 800, 600, 0, 0, 0, 0);
+            Turret turret1 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 100, 100, 0, 0, 0, 5);
+            Turret turret2 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 800, 600, 0, 0, 0, 5);
             // Orginal Turret Locations  - (## + (TANK_LENGTH / 2))
 
             //Start Button
