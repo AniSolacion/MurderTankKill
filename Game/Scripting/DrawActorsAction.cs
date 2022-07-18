@@ -35,9 +35,6 @@ namespace asteroid.script {
                 else if(actor == tank2){
                     actorColor = Color.RED;
                 }
-                else{
-                    actorColor = Color.BLACK;
-                }
                 // Color actorColor = actor is Tank ? Color.BLUE : Color.BLACK;
                 this.screenService.DrawRectangle(actor.GetPosition(), actor.GetWidth(), actor.GetHeight(), actorColor, 5);
             }
