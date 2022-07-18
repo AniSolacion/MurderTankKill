@@ -10,7 +10,6 @@ namespace asteroid.script {
     class HandleBulletsWallCollisionAction : genie.script.Action {
         
         // Member Variables
-        //RaylibPhysicsService physicsService;
         private genie.cast.Actor? bullets;
         private genie.cast.Actor? MAX_X;
         private genie.cast.Actor? MAX_Y;
@@ -21,7 +20,6 @@ namespace asteroid.script {
         public HandleBulletsWallCollisionAction(int priority) : base(priority) {
             this.bullets = null;
             MAX_X = null;
-            
             MIN_X = null;
             MAX_Y = null;
             MIN_Y = null;

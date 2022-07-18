@@ -56,8 +56,8 @@ namespace asteroid.script
                 this.bulletVel.vx = (float)(Math.Cos(convert));
                 this.bulletVel.vy = (float)(Math.Sin(convert));
 
-                float bulletX = turret.GetX() + (float)(Math.Cos(convert)) * turret.GetHeight();
-                float bulletY = turret.GetY() + (float)(Math.Sin(convert)) * turret.GetHeight();
+                float bulletX = turret.GetX() + (float)(Math.Cos(convert)) * turret.GetWidth();
+                float bulletY = turret.GetY() + (float)(Math.Sin(convert)) * turret.GetWidth();
             
                 // Create the bullet and put it in the cast
                 Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
@@ -75,7 +75,7 @@ namespace asteroid.script
             if (turret2 != null && p2timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 2) {
                 // Bullet's starting position should be the direction of the turret
                 float bulletX = turret2.GetX();
-                float bulletY = turret2.GetY() - turret2.GetHeight();
+                float bulletY = turret2.GetY() - turret2.GetWidth();
 
                 double angle = 0;
                 double pi = Math.PI;
@@ -84,8 +84,8 @@ namespace asteroid.script
                 this.bulletVel.vx = (float)(Math.Cos(convert));
                 this.bulletVel.vy = (float)(Math.Sin(convert));
 
-                float bulletX2 = turret2.GetX() + (float)(Math.Cos(convert)) * turret2.GetHeight();
-                float bulletY2 = turret2.GetY() + (float)(Math.Sin(convert)) * turret2.GetHeight();
+                float bulletX2 = turret2.GetX() + (float)(Math.Cos(convert)) * turret2.GetWidth();
+                float bulletY2 = turret2.GetY() + (float)(Math.Sin(convert)) * turret2.GetWidth();
 
                 // Create the bullet and put it in the cast
                 Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX2, bulletY2, this.bulletVel.vx, this.bulletVel.vy);
