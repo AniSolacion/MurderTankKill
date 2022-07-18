@@ -62,7 +62,7 @@ namespace asteroid.script {
             // }
             // if(bullets.GetX() == wallMaxX.GetMaxX() || bullets.GetX() == wallMinX.GetMinX()){
             //     bullets.SetVx(-bullets.GetVy());
-            }
+            // }
         }
     }
 }
