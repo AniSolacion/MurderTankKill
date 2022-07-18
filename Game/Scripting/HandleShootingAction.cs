@@ -46,12 +46,21 @@ namespace asteroid.script
 
             TimeSpan p1timeSinceLastShot = DateTime.Now - this.p1lastBulletSpawn;
             if (turret != null && p1timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 1) {
-                // Bullet's starting position should be the direction of the turret
-                float bulletX = turret.GetX();
-                float bulletY = turret.GetY() - turret.GetHeight();
+                // Bullet's starting position should be the tip of the turret and direction
+                //Calculate turret tip == turret location + direction of 1/2 height
 
+                double angle = 0;
+                double pi = Math.PI;
+                angle = (double)turret.GetRotation();
+                double convert = pi/180*angle;
+                this.bulletVel.vx = (float)(Math.Cos(convert));
+                this.bulletVel.vy = (float)(Math.Sin(convert));
+
+                float bulletX = turret.GetX() + (float)(Math.Cos(convert)) * turret.GetHeight();
+                float bulletY = turret.GetY() + (float)(Math.Sin(convert)) * turret.GetHeight();
+            
                 // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
+                Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vy, this.bulletVel.vx);
                 cast.AddActor("bullets", bullet);
                 
                 // Play the shooting sound :)
@@ -68,8 +77,18 @@ namespace asteroid.script
                 float bulletX = turret2.GetX();
                 float bulletY = turret2.GetY() - turret2.GetHeight();
 
+                double angle = 0;
+                double pi = Math.PI;
+                angle = (double)turret2.GetRotation();
+                double convert = pi/180*angle;
+                this.bulletVel.vx = (float)(Math.Cos(convert));
+                this.bulletVel.vy = (float)(Math.Sin(convert));
+
+                float bulletX2 = turret2.GetX() + (float)(Math.Cos(convert)) * turret2.GetHeight();
+                float bulletY2 = turret2.GetY() + (float)(Math.Sin(convert)) * turret2.GetHeight();
+
                 // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy);
+                Actor bullet = new Actor("./Game/Asset/Bullet.png", 5, 15, bulletX2, bulletY2, this.bulletVel.vy, this.bulletVel.vx);
                 cast.AddActor("bullets", bullet);
                 
                 // Play the shooting sound :)
