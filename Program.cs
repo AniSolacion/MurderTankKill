@@ -115,8 +115,12 @@ namespace asteroid
             // Add all update actions
             script.AddAction("update", new MoveActorsAction(1, physicsService));
             script.AddAction("update", new HandleBulletsTankCollisionAction(1, physicsService, audioservice));
-
             script.AddAction("update", new HandleBulletsWallCollisionAction(1));
+
+            //Apply for each bullet
+            // foreach(Bullet bullet in ){
+            //     script.AddAction("update", new HandleBulletsWallCollisionAction(1));
+            // }
 
             script.AddAction("update", new HandleTankWallCollisionAction(1));
 
