@@ -33,17 +33,19 @@ namespace asteroid.script {
             this.bullets = cast.GetFirstActor("bullets");
 
             if (this.bullets != null) {
-                if (this.bullets.GetX() - this.bullets.GetWidth() < MIN_X.GetX()) {
-                    this.bullets.SetVx(-this.bullets.GetVx());
-                }
-                if (this.bullets.GetX() + this.bullets.GetWidth() > MAX_X.GetX()) {
-                    this.bullets.SetVx(-this.bullets.GetVx());
-                }
-                if (this.bullets.GetY() - this.bullets.GetHeight() < MIN_Y.GetY()) {
-                    this.bullets.SetVy(-this.bullets.GetVy());
-                }
-                if (this.bullets.GetY() + this.bullets.GetHeight() > MAX_Y.GetY()) {
-                    this.bullets.SetVy(-this.bullets.GetVy());
+                foreach (Actor bullet in cast.GetActors("bullets")) {
+                    if (bullet.GetX() - bullet.GetWidth() < MIN_X.GetX()) {
+                        bullet.SetVx(-bullet.GetVx());
+                    }
+                    if (bullet.GetX() + bullet.GetWidth() > MAX_X.GetX()) {
+                        bullet.SetVx(-bullet.GetVx());
+                    }
+                    if (bullet.GetY() - bullet.GetHeight() < MIN_Y.GetY()) {
+                        bullet.SetVy(-bullet.GetVy());
+                    }
+                    if (bullet.GetY() + bullet.GetHeight() > MAX_Y.GetY()) {
+                        bullet.SetVy(-bullet.GetVy());
+                    }
                 }
             }
         }
