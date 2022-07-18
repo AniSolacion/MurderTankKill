@@ -30,31 +30,6 @@ namespace asteroid.script {
 
             // First, get a list of bullets out of the cast
             bullets = cast.GetActors("bullets");
-            this.tank1 = cast.GetFirstActor("tank1");
-            this.tank2 = cast.GetFirstActor("tank2");
-            this.turret1 = cast.GetFirstActor("turret1");
-            this.turret2 = cast.GetFirstActor("turret2");
-
-            if (this.tank1 != null) {
-                // Check if any bullet collides with any asteroid
-                foreach (Actor bullet in cast.GetActors("bullets")) {
-                    if (this.physicsService.CheckCollision(this.tank1, bullet)) {
-                        cast.RemoveActor("bullets", bullet);
-                        cast.RemoveActor("tank1", tank1);
-                        cast.RemoveActor("turret1", turret1);
-                    }
-                }
-            }
-            
-            if (this.tank2 != null) {
-                foreach (Actor bullet in cast.GetActors("bullets")) {
-                    if (this.physicsService.CheckCollision(this.tank2, bullet)) {
-                        cast.RemoveActor("bullets", bullet);
-                        cast.RemoveActor("tank2", tank2);
-                        cast.RemoveActor("turret2", turret2);
-                    }
-                }
-            }
 
             //Bullet Rotation
             // if(bullets.GetY() == wallMaxY.GetMaxY() || bullets.GetY() == wallMinY.GetMinY()){
