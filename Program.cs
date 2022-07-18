@@ -67,12 +67,26 @@ namespace asteroid
             StartGameButton startGameButton = new StartGameButton("./asteroid/assets/others/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
             cast.AddActor("start_button", startGameButton);
 
+            // Right Wall
+            Wall wallMaxX = new Wall("", 1, W_SIZE.Item1, W_SIZE.Item1, 0, 0, 0, 0, 0);
+            // Bottom Wall
+            Wall wallMaxY = new Wall("", W_SIZE.Item2, 1, 0, W_SIZE.Item2, 0, 0, 0, 0);
+            // Left Wall
+            Wall wallMinX = new Wall("", 1, W_SIZE.Item1, 0, 0, 0, 0, 0, 0);
+            // Right Wall
+            Wall wallMinY = new Wall("", W_SIZE.Item2, 1, 0, 0, 0, 0, 0, 0);
+
+
+
             // Give actors to cast
-            //cast.AddActor("ship", ship);
             cast.AddActor("tank1", tank1);
             cast.AddActor("tank2", tank2);
             cast.AddActor("turret1", turret1);
             cast.AddActor("turret2", turret2);
+            cast.AddActor("maxX", wallMaxX);
+            cast.AddActor("maxY", wallMaxY);
+            cast.AddActor("minX", wallMinX);
+            cast.AddActor("minY", wallMinY);
 
             // Create the script
             Script script = new Script();
@@ -96,8 +110,7 @@ namespace asteroid
             // Add all update actions
             script.AddAction("update", new MoveActorsAction(1, physicsService));
             script.AddAction("update", new HandleBulletsTankCollisionAction(1, physicsService, audioservice));
-            //script.AddAction("update", new HandleTankAsteroidsCollisionAction(1, physicsService, audioservice));
-            //script.AddAction("update", new HandleBulletsAsteroidsCollisionAction(1, physicsService, audioservice));
+            script.AddAction("update", new HandleTankWallCollisionAction(1));
 
             // Add all output actions
             script.AddAction("output", new DrawActorsAction(1, screenService));
