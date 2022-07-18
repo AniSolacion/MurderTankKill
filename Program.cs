@@ -34,9 +34,9 @@ namespace asteroid
             // A few game constants
             (int, int) W_SIZE = (900, 700);
             int TANK_WIDTH = 40;
-            int TANK_LENGTH = 40;
+            int TANK_LENGTH = 50;
             int TURRET_WIDTH = 10;
-            int TURRET_LENGTH = 50;
+            int TURRET_LENGTH = 40;
             string SCREEN_TITLE = "Murder Tank Kill";
             int FPS = 120;
             
@@ -59,8 +59,8 @@ namespace asteroid
             //"" - Needs to point to an image to rotate something.
             Tank tank1 = new Tank("./Game/Asset/Tank.png", TANK_WIDTH, TANK_LENGTH, 100, 100, 0, 0, 0, 0);
             Tank tank2 = new Tank("./Game/Asset/Tank.png", TANK_WIDTH, TANK_LENGTH, 800, 600, 0, 0, 0, 0);
-            Turret turret1 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 100, 100, 0, 0, 0, 0);
-            Turret turret2 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 800, 600, 0, 0, 0, 0);
+            Turret turret1 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 100, 100, 0, 0, 0, 5);
+            Turret turret2 = new Turret("./Game/Asset/Turret1.png", TURRET_WIDTH, TURRET_LENGTH, 800, 600, 0, 0, 0, 5);
             // Orginal Turret Locations  - (## + (TANK_LENGTH / 2))
 
             //Start Button
@@ -76,7 +76,10 @@ namespace asteroid
             // Right Wall
             Wall wallMinY = new Wall("", W_SIZE.Item2, 1, 0, 0, 0, 0, 0, 0);
 
-
+            Wall wall1 = new Wall("", 4, 2, 200, 50, 0, 0, 0, 0);
+            Wall wall2 = new Wall("", 20, 2, 70, 200, 0, 0, 0, 0);
+            Wall wall3 = new Wall("", 15, 2, 5, 10, 0, 0, 0, 0);
+            Wall wallspin = new Wall("", 200, 2, 300, 300, 0, 0, 0, 1);
 
             // Give actors to cast
             cast.AddActor("tank1", tank1);
@@ -87,6 +90,7 @@ namespace asteroid
             cast.AddActor("maxY", wallMaxY);
             cast.AddActor("minX", wallMinX);
             cast.AddActor("minY", wallMinY);
+            
 
             // Create the script
             Script script = new Script();
