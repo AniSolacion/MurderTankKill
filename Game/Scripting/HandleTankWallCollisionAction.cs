@@ -70,15 +70,15 @@ namespace asteroid.script {
                 }
                 if (this.tank2.GetX() + this.tank2.GetWidth() > MAX_X.GetX()) {
                     this.tank2.SetX(MAX_X.GetX() - this.tank2.GetWidth());
-                    this.turret1.SetX(this.turret1.GetPreviousX());
+                    this.turret2.SetX(this.turret2.GetPreviousX());
                 }
                 if (this.tank2.GetY() - this.tank2.GetHeight() < MIN_Y.GetY()) {
                     this.tank2.SetY(MIN_Y.GetY() + this.tank2.GetHeight());
-                    this.turret1.SetY(this.turret1.GetPreviousY());
+                    this.turret2.SetY(this.turret2.GetPreviousY());
                 }
-                if (this.tank2.GetY() + this.tank1.GetHeight() > MAX_Y.GetY()) {
+                if (this.tank2.GetY() + this.tank2.GetHeight() > MAX_Y.GetY()) {
                     this.tank2.SetY(MAX_Y.GetY() - this.tank2.GetHeight());
-                    this.turret1.SetY(this.turret2.GetPreviousY());
+                    this.turret2.SetY(this.turret2.GetPreviousY());
                 }
             }
         } 

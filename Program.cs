@@ -65,7 +65,7 @@ namespace asteroid
             // Orginal Turret Locations  - (## + (TANK_LENGTH / 2))
 
             //Start Button
-            StartGameButton startGameButton = new StartGameButton("./asteroid/assets/others/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
+            StartGameButton startGameButton = new StartGameButton("./Game/Asset/start_button.png", 305, 113, W_SIZE.Item1/2, W_SIZE.Item2/2);
             cast.AddActor("start_button", startGameButton);
 
             // Right Wall
@@ -87,6 +87,7 @@ namespace asteroid
             cast.AddActor("tank2", tank2);
             cast.AddActor("turret1", turret1);
             cast.AddActor("turret2", turret2);
+
             cast.AddActor("maxX", wallMaxX);
             cast.AddActor("maxY", wallMaxY);
             cast.AddActor("minX", wallMinX);

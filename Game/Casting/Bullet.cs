@@ -2,8 +2,6 @@ using genie.cast;
 
 namespace asteroid.cast {
     class Bullet : Actor {
-        
-        private int bounceCounter;
 
         public Bullet(string path, int width, int height,
                         float x = 0, float y = 0,
@@ -12,15 +10,7 @@ namespace asteroid.cast {
                         int counter = 0) : 
         base(path, width, height, x, y, vx, vy, rotation, rotationVel, counter)
         {
-            this.bounceCounter = 0;
-        }
-
-        public int getBulletCounter() {
-            return bounceCounter;
-        }
-
-        public void setBulletCounter (int change) {
-            this.bounceCounter = change;
+            
         }
     }
 }
