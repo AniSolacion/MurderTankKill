@@ -34,9 +34,9 @@ namespace asteroid
             // A few game constants
             (int, int) W_SIZE = (900, 700);
             int TANK_WIDTH = 40;
-            int TANK_LENGTH = 50;
+            int TANK_LENGTH = 40;
             int TURRET_WIDTH = 10;
-            int TURRET_LENGTH = 80;
+            int TURRET_LENGTH = 50;
             string SCREEN_TITLE = "Murder Tank Kill";
             int FPS = 120;
             
