@@ -36,7 +36,7 @@ namespace asteroid.script {
             this.turret2 = cast.GetFirstActor("turret2");
 
             if (this.tank1 != null) {
-                // Check if any bullet collides with any asteroid
+                // Check if any bullet collides with tank1
                 foreach (Actor bullet in cast.GetActors("bullets")) {
                     if (this.physicsService.CheckCollision(this.tank1, bullet)) {
                         cast.RemoveActor("bullets", bullet);
@@ -47,6 +47,7 @@ namespace asteroid.script {
             }
             
             if (this.tank2 != null) {
+                // Check if any bullet collides with tank2
                 foreach (Actor bullet in cast.GetActors("bullets")) {
                     if (this.physicsService.CheckCollision(this.tank2, bullet)) {
                         cast.RemoveActor("bullets", bullet);
