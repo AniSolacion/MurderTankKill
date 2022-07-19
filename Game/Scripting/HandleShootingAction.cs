@@ -38,6 +38,8 @@ namespace asteroid.script
         }
 
         private void SpawnBullet(Clock clock, Cast cast, int turretSelector) {
+            // These ifs are to differentiate which turret the bullet comes from 
+            // and so that both can fire at the same time.
             if (turretSelector == 1) {
                 turret = cast.GetFirstActor("turret1");
             }
@@ -45,11 +47,12 @@ namespace asteroid.script
                 turret2 = cast.GetFirstActor("turret2");
             }
 
+            // Same deal with these two if statements.
             TimeSpan p1timeSinceLastShot = DateTime.Now - this.p1lastBulletSpawn;
             if (turret != null && p1timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 1) {
                 // Bullet's starting position should be the tip of the turret and direction
-                //Calculate turret tip == turret location + direction of 1/2 height
-
+                // Calculate turret tip == turret location + direction of 1/2 height
+                // All this math is to be able to shoot the turret at an angle and to have the bullets have that same angle.
                 double angle = 0;
                 double pi = Math.PI;
                 angle = (double)turret.GetRotation();
@@ -74,7 +77,7 @@ namespace asteroid.script
 
             TimeSpan p2timeSinceLastShot = DateTime.Now - this.p2lastBulletSpawn;
             if (turret2 != null && p2timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 2) {
-                // Bullet's starting position should be the direction of the turret
+                // All this math is to be able to shoot the turret at an angle and to have the bullets have that same angle.
                 float bulletX = turret2.GetX();
                 float bulletY = turret2.GetY() - turret2.GetWidth();
 
@@ -104,7 +107,6 @@ namespace asteroid.script
         public override void execute(Cast cast, Script script, Clock clock, Callback callback)
         {
             // Grab the tank from the cast
-            // this.tank = cast.GetFirstActor("tank");
             Actor? turret1 = cast.GetFirstActor("turret1");
             Actor? turret2 = cast.GetFirstActor("turret2");
 
