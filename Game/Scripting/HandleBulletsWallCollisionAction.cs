@@ -33,7 +33,9 @@ namespace asteroid.script {
             this.bullets = cast.GetFirstActor("bullets");
 
             if (this.bullets != null) {
+                //Counts for each bullet
                 foreach (Actor bullet in cast.GetActors("bullets")) {
+                    //Checks if a bullet hits any wall and counts it
                     if (bullet.GetX() - bullet.GetWidth() < MIN_X.GetX()) {
                         bullet.SetVx(-bullet.GetVx());
                         bullet.setBulletCounter(bullet.getBulletCounter() + 1);
@@ -50,6 +52,7 @@ namespace asteroid.script {
                         bullet.SetVy(-bullet.GetVy());
                         bullet.setBulletCounter(bullet.getBulletCounter() + 1);
                     }
+                    //Deletes bullet if it hits the wall 3 times
                     if(bullet.getBulletCounter() == 3){
                         cast.RemoveActor("bullets", bullet);
                     }

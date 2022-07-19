@@ -26,15 +26,14 @@ namespace asteroid.script {
 
             Color actorColor = Color.WHITE;
 
-            // Draw all actors as rectangles for now.
+            // Draws around actors
             foreach (Actor actor in cast.GetAllActors()) {
-
-
+                
                 if(actor == tank1){
-                    actorColor = Color.BLUE;
+                    actorColor = Color.BLUE; //Specifies tank1 with a blue surrounding
                 }
                 else if(actor == tank2){
-                    actorColor = Color.RED;
+                    actorColor = Color.RED; //Specifies tank2 with a red surrounding
                 }
                 else if (actor == startButton) {
                     actorColor = Color.BLACK;
@@ -42,7 +41,6 @@ namespace asteroid.script {
                 else {
                     actorColor = Color.WHITE;
                 }
-                // Color actorColor = actor is Tank ? Color.BLUE : Color.BLACK;
                 this.screenService.DrawRectangle(actor.GetPosition(), actor.GetWidth(), actor.GetHeight(), actorColor, 5);
             }
             this.screenService.DrawActors(cast.GetAllActors());
