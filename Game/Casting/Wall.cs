@@ -2,6 +2,7 @@ using genie.cast;
 
 namespace asteroid.cast {
     class Wall : Actor {
+        //
 
         public Wall(string path, int width, int height,
                         float x = 0, float y = 0,

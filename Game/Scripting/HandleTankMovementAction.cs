@@ -6,12 +6,13 @@ using genie.services.raylib;
 
 namespace asteroid.script {
     class HandleTankMovementAction : genie.script.Action {
-        
+        // This class inherits from genie. 
         private RaylibKeyboardService keyboardService;
         private List<int> keysOfInterest;
         private int tankMovementVel = 10;
         private int tankRotation = 5;
         public HandleTankMovementAction(int priority, RaylibKeyboardService keyboardService) : base(priority) {
+            //They keys are added that will be used for tank movement. 
             this.keyboardService = keyboardService;
             this.tankMovementVel = 4;
             this.keysOfInterest = new List<int>();

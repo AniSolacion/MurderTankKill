@@ -34,6 +34,7 @@ namespace asteroid.script {
         }
 
         public override void execute(Cast cast, Script script, Clock clock, Callback callback) {
+            //This grabs all of the cast members we need to check collisions for. 
             this.MAX_X = cast.GetFirstActor("maxX");
             this.MAX_Y = cast.GetFirstActor("maxY");
             this.MIN_X = cast.GetFirstActor("minX");
@@ -41,6 +42,7 @@ namespace asteroid.script {
             this.tank1 = cast.GetFirstActor("tank1");
             this.turret1 = cast.GetFirstActor("turret1");
 
+            //This checks tank to make sure that is is not in the same position as a wall
             if (this.tank1 != null) {
                 if (this.tank1.GetX() - this.tank1.GetWidth() < MIN_X.GetX()) {
                     this.tank1.SetX(MIN_X.GetX() + this.tank1.GetWidth());
@@ -63,6 +65,8 @@ namespace asteroid.script {
             this.tank2 = cast.GetFirstActor("tank2");
             this.turret2 = cast.GetFirstActor("turret2");
 
+
+            //This checks tank2 to make sure that is is not in the same position as a wall
             if (this.tank2 != null) {
                 if (this.tank2.GetX() - this.tank2.GetWidth() < MIN_X.GetX()) {
                     this.tank2.SetX(MIN_X.GetX() + this.tank2.GetWidth());

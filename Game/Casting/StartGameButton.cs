@@ -3,6 +3,7 @@ using genie.cast;
 namespace asteroid.cast {
     class StartGameButton : Actor
     {
+        //This class creates a button and it's list of attributes to use in actor.
 
         public StartGameButton(string path, int width, int height,
                         float x = 0, float y = 0,
