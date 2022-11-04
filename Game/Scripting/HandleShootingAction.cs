@@ -5,6 +5,7 @@ using genie.services;
 using genie.services.raylib;
 using asteroid.cast;
 
+
 namespace asteroid.script
 {
     class HandleShootingAction : genie.script.Action
@@ -47,6 +48,9 @@ namespace asteroid.script
                 turret2 = cast.GetFirstActor("turret2");
             }
 
+            Random random = new Random();
+            
+
             // Same deal with these two if statements.
             TimeSpan p1timeSinceLastShot = DateTime.Now - this.p1lastBulletSpawn;
             if (turret != null && p1timeSinceLastShot.TotalSeconds >= this.attackInterval && turretSelector == 1) {
@@ -62,11 +66,21 @@ namespace asteroid.script
 
                 float bulletX = turret.GetX() + (float)(Math.Cos(convert)) * turret.GetWidth();
                 float bulletY = turret.GetY() + (float)(Math.Sin(convert)) * turret.GetWidth();
-            
-                // Create the bullet and put it in the cast
-                Bullet bullet = new Bullet("./Game/Asset/Bullet.png", 10, 10, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy, 3);
-                cast.AddActor("bullets", bullet);
-                
+
+                float bulletBillX = turret.GetX() + (float)(Math.Cos(convert)) * turret.GetWidth() * 2;
+                float bulletBillY = turret.GetY() + (float)(Math.Sin(convert)) * turret.GetWidth() * 2;
+
+                int shotType = random.Next(1, 11);
+                if (shotType == 10) {
+                    // Create the big bullet and put it in the cast
+                    Bullet bulletBill = new Bullet("./Game/Asset/Bullet.png", 40, 40, bulletBillX, bulletBillY, this.bulletVel.vx * 8, this.bulletVel.vy * 8, 3, 0, 0, true);
+                    cast.AddActor("bullets", bulletBill);
+                }
+                else {
+                    // Create the bullet and put it in the cast
+                    Bullet bullet = new Bullet("./Game/Asset/Bullet.png", 10, 10, bulletX, bulletY, this.bulletVel.vx, this.bulletVel.vy, 3);
+                    cast.AddActor("bullets", bullet);
+                }
                 // Play the shooting sound :)
                 this.audioService.PlaySound("asteroid/assets/sound/bullet_shot.wav", (float) 0.1);
 
@@ -91,9 +105,22 @@ namespace asteroid.script
                 float bulletX2 = turret2.GetX() + (float)(Math.Cos(convert)) * turret2.GetWidth();
                 float bulletY2 = turret2.GetY() + (float)(Math.Sin(convert)) * turret2.GetWidth();
 
-                // Create the bullet and put it in the cast
-                Actor bullet = new Actor("./Game/Asset/Bullet.png", 10, 10, bulletX2, bulletY2, this.bulletVel.vx, this.bulletVel.vy);
-                cast.AddActor("bullets", bullet);
+                float bulletBillX2 = turret2.GetX() + (float)(Math.Cos(convert)) * turret2.GetWidth() * 2;
+                float bulletBillY2 = turret2.GetY() + (float)(Math.Sin(convert)) * turret2.GetWidth() * 2;
+            
+                int shotType = random.Next(1, 11);
+                if (shotType == 10) {
+                    // Create the big bullet and put it in the cast
+                    Bullet bulletBill = new Bullet("./Game/Asset/Bullet.png", 40, 40, bulletBillX2, bulletBillY2, this.bulletVel.vx * 8, this.bulletVel.vy * 8, 3, 0, 0,true);
+                    cast.AddActor("bullets", bulletBill);
+                }
+                else {
+                    // Create the bullet and put it in the cast
+                    Actor bullet = new Actor("./Game/Asset/Bullet.png", 10, 10, bulletX2, bulletY2, this.bulletVel.vx, this.bulletVel.vy);
+                    cast.AddActor("bullets", bullet);
+                }
+
+                
                 
                 // Play the shooting sound :)
                 this.audioService.PlaySound("asteroid/assets/sound/bullet_shot.wav", (float) 0.1);

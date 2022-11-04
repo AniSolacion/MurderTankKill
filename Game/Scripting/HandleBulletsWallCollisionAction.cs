@@ -53,7 +53,10 @@ namespace asteroid.script {
                         bullet.setBulletCounter(bullet.getBulletCounter() + 1);
                     }
                     //Deletes bullet if it hits the wall 3 times
-                    if(bullet.getBulletCounter() == 3){
+                    if(bullet.getBulletCounter() == 3 && !bullet.getIsBulletBill()){
+                        cast.RemoveActor("bullets", bullet);
+                    }
+                    else if (bullet.getBulletCounter() == 8 && bullet.getIsBulletBill()) {
                         cast.RemoveActor("bullets", bullet);
                     }
                 }

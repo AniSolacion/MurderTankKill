@@ -47,6 +47,8 @@ namespace genie.cast {
         private float previousX;
         private float previousY;
 
+        private bool isBulletBill;
+
         private int counter;
         // Public methods:
 
@@ -55,7 +57,7 @@ namespace genie.cast {
                     float x = 0, float y = 0,
                     float vx = 0, float vy = 0,
                     float rotation = 0, float rotationVel = 0,
-                    int counter = 0) {
+                    int counter = 0, bool isBulletBill = false) {
             this.path = path;
 
             this.width = width;
@@ -72,12 +74,15 @@ namespace genie.cast {
 
             this.counter = counter;
 
-            this.flipped = flipped;
+            this.isBulletBill = isBulletBill;
 
             this.previousX = x;
             this.previousY = y;
         }
         
+        public bool getIsBulletBill() {
+            return isBulletBill;
+        }
         public int getBulletCounter() {
             return counter;
         }
